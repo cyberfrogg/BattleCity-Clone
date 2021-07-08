@@ -47,6 +47,24 @@ public class Thing : MonoBehaviour, ICloneable
     }
 
     /// <summary>
+    /// OnCollisionEnter2D implimentation for 2D
+    /// </summary>
+    /// <param name="collision"></param>
+    public virtual void OnThingCollidedEnter(Thing thing)
+    {
+
+    }
+
+    /// <summary>
+    /// OnCollisionExit2D implimentation for 2D
+    /// </summary>
+    /// <param name="collision"></param>
+    public virtual void OnThingCollidedExit(Thing thing)
+    {
+
+    }
+
+    /// <summary>
     /// Clones thing
     /// </summary>
     /// <returns></returns>
@@ -56,5 +74,30 @@ public class Thing : MonoBehaviour, ICloneable
     }
 
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Thing collidedThing = collision.gameObject.GetComponent<Thing>();
 
+        if (collidedThing)
+        {
+            OnThingCollidedEnter(collidedThing);
+        }
+        else
+        {
+            throw new MissingReferenceException("No [Thing] class on collided object");
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        Thing collidedThing = collision.gameObject.GetComponent<Thing>();
+
+        if (collidedThing)
+        {
+            OnThingCollidedExit(collidedThing);
+        }
+        else
+        {
+            throw new MissingReferenceException("No [Thing] class on collided object");
+        }
+    }
 }

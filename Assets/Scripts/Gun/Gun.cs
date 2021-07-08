@@ -12,7 +12,6 @@ namespace Guns
     public class Gun : ScriptableObject, ICloneable
     {
         [SerializeField] private Bullet _bulletPrefab;
-        [SerializeField] private Vector3 _bulletShootPosition;
 
         protected Tank _tank;
 
@@ -28,8 +27,8 @@ namespace Guns
         public virtual void Shoot()
         {
             Bullet bullet = SpawnBullet();
-            bullet.transform.position = _tank.transform.position + _bulletShootPosition;
-            bullet.Follow(_tank.transform.up);
+            bullet.transform.position = _tank.transform.position;
+            bullet.Follow(_tank.transform.up, _tank);
         }
 
         public virtual Bullet SpawnBullet()

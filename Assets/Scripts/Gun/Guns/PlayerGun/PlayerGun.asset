@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PlayerGun
   m_EditorClassIdentifier: 
   _bulletPrefab: {fileID: 8042564128449866764, guid: aa04ad91aba9c2b4d8e32c9802d32827, type: 3}
-  _bulletShootPosition: {x: 0, y: 0, z: 0}
+  _shootOffsetDistance: 0.4
