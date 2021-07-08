@@ -76,9 +76,9 @@ public class Thing : MonoBehaviour, ICloneable
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Thing collidedThing = collision.gameObject.GetComponent<Thing>();
+        Thing collidedThing;
 
-        if (collidedThing)
+        if (collision.gameObject.TryGetComponent<Thing>(out collidedThing))
         {
             OnThingCollidedEnter(collidedThing);
         }
@@ -89,9 +89,9 @@ public class Thing : MonoBehaviour, ICloneable
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        Thing collidedThing = collision.gameObject.GetComponent<Thing>();
+        Thing collidedThing;
 
-        if (collidedThing)
+        if (collision.gameObject.TryGetComponent<Thing>(out collidedThing))
         {
             OnThingCollidedExit(collidedThing);
         }

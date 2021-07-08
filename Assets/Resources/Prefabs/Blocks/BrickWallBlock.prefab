@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1917556005529668124}
   - component: {fileID: 1917556005529668127}
   - component: {fileID: 2573962270506553438}
-  - component: {fileID: 8499762906442467429}
   m_Layer: 0
   m_Name: block_brickwall_full (2)
   m_TagString: Untagged
@@ -124,27 +123,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Self: {fileID: 1917556006623698952}
---- !u!50 &8499762906442467429
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1917556005529668122}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1917556005554111559
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +135,6 @@ GameObject:
   - component: {fileID: 1917556005554111561}
   - component: {fileID: 1917556005554111560}
   - component: {fileID: 5605394873676580980}
-  - component: {fileID: 5829308693696817861}
   m_Layer: 0
   m_Name: block_brickwall_full (3)
   m_TagString: Untagged
@@ -269,27 +246,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Self: {fileID: 1917556006623698952}
---- !u!50 &5829308693696817861
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1917556005554111559}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1917556006623698950
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,7 +305,6 @@ GameObject:
   - component: {fileID: 1917556007015758557}
   - component: {fileID: 1917556007015758556}
   - component: {fileID: 5462811706276626884}
-  - component: {fileID: 293854987980398018}
   m_Layer: 0
   m_Name: block_brickwall_full
   m_TagString: Untagged
@@ -461,27 +416,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Self: {fileID: 1917556006623698952}
---- !u!50 &293854987980398018
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1917556007015758555}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1917556007327849248
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,7 +428,6 @@ GameObject:
   - component: {fileID: 1917556007327849250}
   - component: {fileID: 1917556007327849253}
   - component: {fileID: 1481399892968506417}
-  - component: {fileID: 7254084610276030606}
   m_Layer: 0
   m_Name: block_brickwall_full (1)
   m_TagString: Untagged
@@ -606,24 +539,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Self: {fileID: 1917556006623698952}
---- !u!50 &7254084610276030606
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1917556007327849248}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
