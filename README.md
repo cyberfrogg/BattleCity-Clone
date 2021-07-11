@@ -14,4 +14,4 @@ Example: https://www.youtube.com/watch?v=wWp4hr01Tlk
 **Game** - MonoBehavior, that contains links to Map, user-UI, LevelChanging classes (static access through Game.Instance) <br>
 
 ## Using project
-All methods are documented via visual studio hints and <summary>
+All methods are documented via visual studio hints and ```<summary>```
