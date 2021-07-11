@@ -6,12 +6,12 @@ Example: https://www.youtube.com/watch?v=wWp4hr01Tlk
 - ```$ git clone https://github.com/cyberfrogg/BattleCity-Clone```
 
 ## Basic Entities
-**Thing** - MonoBehaviour translator class
-Entity - Commonly used class for moveable objects (like tanks, bullets)
-**Block** - Block in scene
-**BreakableBlock** - breakable block, may break
-**Tank** - Tank
-**Game** - MonoBehavior, that contains links to Map, user-UI, LevelChanging classes (static access through Game.Instance)
+**Thing** - MonoBehaviour translator class <br>
+**Entity** - Commonly used class for moveable objects (like tanks, bullets) <br>
+**Block** - Block in scene <br>
+**BreakableBlock** - breakable block, may break <br>
+**Tank** - Tank <br>
+**Game** - MonoBehavior, that contains links to Map, user-UI, LevelChanging classes (static access through Game.Instance) <br>
 
 ## Using project
 All methods are documented via visual studio hints and <summary>
