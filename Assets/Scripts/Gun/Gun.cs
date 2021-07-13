@@ -9,11 +9,14 @@ namespace Guns
     /// <summary>
     /// Base class of Gun
     /// </summary>
-    public class Gun : ScriptableObject, ICloneable
+    public class Gun : MonoBehaviour
     {
         [SerializeField] private Bullet _bulletPrefab;
 
-        protected Tank _tank;
+        /// <summary>
+        /// Self tank
+        /// </summary>
+        protected Tank Tank;
 
         /// <summary>
         /// Initializinng gun
@@ -21,27 +24,29 @@ namespace Guns
         /// <param name="tank">Self tank</param>
         public virtual void Init(Tank tank)
         {
-            _tank = tank;
+            Tank = tank;
         }
 
+        /// <summary>
+        /// Shoots bullet
+        /// </summary>
         public virtual void Shoot()
         {
             Bullet bullet = SpawnBullet();
-            bullet.transform.position = _tank.transform.position;
-            bullet.Follow(_tank.transform.up, _tank);
+            bullet.transform.position = Tank.transform.position;
+            bullet.Follow(Tank.transform.up, Tank);
         }
 
+        /// <summary>
+        /// Spawns bullet
+        /// </summary>
+        /// <returns>Bullet reference</returns>
         public virtual Bullet SpawnBullet()
         {
             Bullet bullet = Instantiate((Bullet)_bulletPrefab.Clone());
-            bullet.transform.position = _tank.transform.position;
+            bullet.transform.position = Tank.transform.position;
 
             return bullet;
-        }
-
-        public virtual object Clone()
-        {
-            return this.MemberwiseClone();
         }
     }
 }

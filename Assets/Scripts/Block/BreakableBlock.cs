@@ -10,6 +10,11 @@ namespace Blocks
     /// </summary>
     public class BreakableBlock : Block
     {
+        /// <summary>
+        /// Called on Block break
+        /// </summary>
+        /// <param name="part">broken part</param>
+        /// <param name="collidedThing">thing that breaks part</param>
         public virtual void OnBlockPartBreak(BreakableBlockPart part, Thing collidedThing)
         {
             Destroy(part.gameObject);

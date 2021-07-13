@@ -1,24 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
+using GameUtils;
 using UnityEngine;
 
 namespace Entities
 {
-    /// <summary>
-    /// Tank of Player
-    /// </summary>
     public class PlayerTank : Tank
     {
+        [SerializeField] private PlayerTankAI _playerTankAI;
+
+        public override void Awake()
+        {
+            base.Awake();
+
+            AI = _playerTankAI;
+            AI.Init(this);
+        }
+
         public override void Update()
         {
             base.Update();
+        }
 
-            Move(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
+        public override void Die(Entity deathOwner)
+        {
+            Game.Instance.Triggers.OnPlayerKilled.Invoke();
 
-            if (Input.GetButtonDown("Fire1"))
-            {
-                Gun.Shoot();
-            }
+            base.Die(deathOwner);
         }
     }
 }

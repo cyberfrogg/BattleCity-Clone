@@ -37,9 +37,9 @@ public class Thing : MonoBehaviour, ICloneable
     /// LookAt implimentation for 2D
     /// </summary>
     /// <param name="moveVector"></param>
-    public virtual void LookAt(Vector2 moveVector)
+    public virtual void LookAt(Vector2 lookPosition)
     {
-        Vector3 vectorDifference = (new Vector3(moveVector.x, moveVector.y, 0) + transform.position) - transform.position;
+        Vector3 vectorDifference = (new Vector3(lookPosition.x, lookPosition.y, 0) + transform.position) - transform.position;
         vectorDifference.Normalize();
 
         float rot_z = Mathf.Atan2(vectorDifference.y, vectorDifference.x) * Mathf.Rad2Deg;

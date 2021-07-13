@@ -8,6 +8,9 @@ using UnityEngine;
 
 namespace Blocks
 {
+    /// <summary>
+    /// Breakable part of block
+    /// </summary>
     public class BreakableBlockPart : Thing
     {
         public BreakableBlock Self;

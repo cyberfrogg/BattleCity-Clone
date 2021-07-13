@@ -1,7 +1,7 @@
 using Guns;
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using GameUtils;
 
 namespace Entities
 {
@@ -23,16 +23,21 @@ namespace Entities
             }
         }
         public float MoveSpeed;
+        public int Health { get; private set; }
+        public bool IsDead { get; private set; }
 
+        [SerializeField] private int _maxHealth;
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private Transform _spriteContainer;
         [SerializeField] private Gun _gun;
 
-        public override void Start()
+        public override void Awake()
         {
-            base.Start();
+            base.Awake();
 
-            if(_gun != null)
+            Health = _maxHealth;
+
+            if (_gun != null)
             {
                 _gun.Init(this);
             }
@@ -50,6 +55,46 @@ namespace Entities
             {
                 LookAt(moveVector);
             }
+        }
+
+        /// <summary>
+        /// Damages tank
+        /// </summary>
+        /// <param name="damageCount">Count of Damage. Must be greated than 0</param>
+        /// <param name="damageOwner">Owner</param>
+        public virtual void Damage(int damageCount, Entity damageOwner)
+        {
+            if(damageCount <= 0)
+            {
+                throw new ArgumentException("Damage must be greater than 0");
+            }
+
+            Health -= damageCount;
+
+            ValidateHealth(damageOwner);
+        }
+
+        /// <summary>
+        /// Validating health. Health validator
+        /// </summary>
+        /// <param name="validateOwner"></param>
+        public virtual void ValidateHealth(Entity validateOwner)
+        {
+            if (Health <= 0)
+            {
+                Die(validateOwner);
+            }
+        }
+
+        /// <summary>
+        /// Death. Dieing
+        /// </summary>
+        /// <param name="deathOwner"></param>
+        public virtual void Die(Entity deathOwner)
+        {
+            IsDead = true;
+
+            Destroy(gameObject);
         }
 
     }

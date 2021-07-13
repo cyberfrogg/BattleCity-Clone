@@ -5,9 +5,6 @@ using UnityEngine;
 
 namespace Guns
 {
-    [CreateAssetMenu(fileName = "PlayerGun", menuName = "Guns/PlayerGun", order = 1)]
-
-
     /// <summary>
     /// Default Player Gun
     /// </summary>
@@ -18,8 +15,8 @@ namespace Guns
         public override void Shoot()
         {
             Bullet bullet = SpawnBullet();
-            bullet.transform.position = _tank.transform.position + (_tank.transform.up * _shootOffsetDistance);
-            bullet.Follow(_tank.transform.up, _tank);
+            bullet.transform.position = Tank.transform.position + (Tank.transform.up * _shootOffsetDistance);
+            bullet.Follow(Tank.transform.up, Tank);
         }
     }
 }

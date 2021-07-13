@@ -8,7 +8,8 @@ namespace Entities
 {
     public class Bullet : Entity
     {
-        public Entity Owner;
+        [HideInInspector] public Entity Owner;
+        public int DamageCount = 1;
 
         [SerializeField] private float _bulletSpeed;
         private Vector2 _followDirection;
@@ -55,6 +56,15 @@ namespace Entities
             {
                 if(thing != Owner)
                 {
+                    try
+                    {
+                        (thing as Tank).Damage(DamageCount, this);
+                    }
+                    catch
+                    {
+
+                    }
+
                     Destroy(gameObject);
                 }
             }

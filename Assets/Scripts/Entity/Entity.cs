@@ -9,8 +9,13 @@ namespace Entities
     /// </summary>
     public class Entity : Thing
     {
+        [HideInInspector] public EntityAI AI;
 
+        public override void Update()
+        {
+            base.Update();
+
+            AI.UpdateAI();
+        }
     }
-
-    
 }
