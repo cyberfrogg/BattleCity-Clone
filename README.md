@@ -4,6 +4,7 @@ Example: https://www.youtube.com/watch?v=wWp4hr01Tlk
 ## Initialisation
 - Unity version: 2020.3.13f1 (LTS)
 - ```$ git clone https://github.com/cyberfrogg/BattleCity-Clone```
+- Start scene `menu`
 
 ## Basic Entities
 **Thing** - MonoBehaviour translator class <br>
