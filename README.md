@@ -18,5 +18,5 @@ Example: https://www.youtube.com/watch?v=wWp4hr01Tlk
 All methods are documented via visual studio hints and ```<summary>```
 
 
-## Used libraries
-- https://github.com/h8man/NavMeshPlus - 2d navmesh
+## Used plugins
+- TextMeshPro
