@@ -1,6 +1,5 @@
 ﻿using GameUtils;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace SceneEvents
 {
