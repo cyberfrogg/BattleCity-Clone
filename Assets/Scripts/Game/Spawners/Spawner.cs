@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace GameUtils
@@ -12,15 +13,33 @@ namespace GameUtils
 
         [SerializeField] private Transform _spawnPoint;
         [SerializeField] private GameObject _animationObject;
+        public List<GameObject> SpawnList;
+
 
         /// <summary>
         /// Spawns thing
         /// </summary>
         public virtual Thing Spawn()
         {
-            Thing instance = Instantiate((Thing)_spawnObject.Clone());
 
-            instance.transform.position = _spawnPoint != null ? _spawnPoint.position : transform.position;
+
+
+            for (int i = 0; i < SpawnList.Count; i++)
+            {
+                if (!SpawnList[i].CompareTag("StartingPos"))
+                {
+                    SpawnList.RemoveAt(i);
+                }
+            }
+
+            Thing instance = Instantiate((Thing)_spawnObject.Clone());
+            //instance.transform.position = _spawnPoint != null ? _spawnPoint.position : transform.position;
+
+
+
+            instance.transform.position = _spawnPoint != null ? _spawnPoint.position : SpawnList[Random.Range(0, SpawnList.Count)].transform.position;
+
+
 
             return instance;
         }
@@ -31,6 +50,11 @@ namespace GameUtils
         /// <param name="animationTime">Delay (in ms)</param>
         public virtual async void Spawn(int animationTime)
         {
+
+
+            
+
+
             _animationObject.SetActive(true);
 
             await Task.Delay(animationTime);
