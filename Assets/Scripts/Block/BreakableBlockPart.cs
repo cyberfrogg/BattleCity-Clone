@@ -17,6 +17,11 @@ namespace Blocks
             {
                 Self.OnBlockPartBreak(this, thing);
             }
+
+            if (!Self.gameObject.CompareTag("dummy") && thing.gameObject.CompareTag("dummy"))
+            {
+                Destroy(Self.gameObject);
+            }
         }
     }
 }

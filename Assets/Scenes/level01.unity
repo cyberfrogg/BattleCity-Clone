@@ -14120,7 +14120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5001aa0d1412ba48864d9882bd82758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnObject: {fileID: 0}
+  _spawnObject: {fileID: 1238168875}
   _spawnPoint: {fileID: 0}
   _animationObject: {fileID: 145695775}
   SpawnList:
@@ -15721,7 +15721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5001aa0d1412ba48864d9882bd82758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnObject: {fileID: 0}
+  _spawnObject: {fileID: 1420037333}
   _spawnPoint: {fileID: 0}
   _animationObject: {fileID: 735467048}
   SpawnList:
@@ -21103,7 +21103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5001aa0d1412ba48864d9882bd82758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnObject: {fileID: 0}
+  _spawnObject: {fileID: 1922870757}
   _spawnPoint: {fileID: 0}
   _animationObject: {fileID: 688457140}
   SpawnList:
@@ -23743,6 +23743,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelGeneration
       objectReference: {fileID: 0}
+    - target: {fileID: 1472497847687021440, guid: 07a7aa56516918942b4205ed275ddc01, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1472497847687021441, guid: 07a7aa56516918942b4205ed275ddc01, type: 3}
       propertyPath: _resetTime
       value: 0.25
@@ -24297,6 +24301,10 @@ PrefabInstance:
     - target: {fileID: 2217389645608855178, guid: 90dcf4c655a4fdf4493faa2d27cabc78, type: 3}
       propertyPath: m_Name
       value: EnemySpawnPos
+      objectReference: {fileID: 0}
+    - target: {fileID: 2217389645608855178, guid: 90dcf4c655a4fdf4493faa2d27cabc78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2217389645608855181, guid: 90dcf4c655a4fdf4493faa2d27cabc78, type: 3}
       propertyPath: m_RootOrder
@@ -25096,6 +25104,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerTank
       objectReference: {fileID: 0}
+    - target: {fileID: 7086040485814057190, guid: 3a15e7304d0122048900275b0ef77908, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a15e7304d0122048900275b0ef77908, type: 3}
 --- !u!1001 &7125677231504794780
@@ -25892,6 +25904,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrier
       objectReference: {fileID: 0}
+    - target: {fileID: 8811265407402005769, guid: 184d3c90829460440a2894b6b9aee08a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8811265407402005770, guid: 184d3c90829460440a2894b6b9aee08a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -26328,6 +26344,10 @@ PrefabInstance:
     - target: {fileID: 9113191562095258398, guid: 8bbf89b9a6d61a442a7c7e7fec06baca, type: 3}
       propertyPath: m_Name
       value: PlayerSpawnPos
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113191562095258398, guid: 8bbf89b9a6d61a442a7c7e7fec06baca, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bbf89b9a6d61a442a7c7e7fec06baca, type: 3}

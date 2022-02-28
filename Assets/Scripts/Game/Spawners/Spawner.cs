@@ -22,7 +22,7 @@ namespace GameUtils
         public virtual Thing Spawn()
         {
 
-
+            
 
             for (int i = 0; i < SpawnList.Count; i++)
             {
@@ -33,13 +33,11 @@ namespace GameUtils
             }
 
             Thing instance = Instantiate((Thing)_spawnObject.Clone());
-            //instance.transform.position = _spawnPoint != null ? _spawnPoint.position : transform.position;
 
-
-
-            instance.transform.position = _spawnPoint != null ? _spawnPoint.position : SpawnList[Random.Range(0, SpawnList.Count)].transform.position;
-
-
+            if(SpawnList.Count==0)
+                instance.transform.position = _spawnPoint != null ? _spawnPoint.position : transform.position;
+            else
+                instance.transform.position = _spawnPoint != null ? _spawnPoint.position : SpawnList[Random.Range(0, SpawnList.Count)].transform.position;
 
             return instance;
         }
@@ -50,10 +48,6 @@ namespace GameUtils
         /// <param name="animationTime">Delay (in ms)</param>
         public virtual async void Spawn(int animationTime)
         {
-
-
-            
-
 
             _animationObject.SetActive(true);
 

@@ -9,18 +9,29 @@ using UnityEngine.SceneManagement;
 public class LevelGeneration : MonoBehaviour
 {
     public List<GameObject> AllRoomPoint;
-    public List<Transform> StartingPosForPlayer;
-    public GameObject PlayerTransform;
-    public Transform[] EnemyTransform;
-    public Transform[] StartingPosForEnemy;
     public GameObject[] Rooms;
+
+    //public List<Transform> StartingPosForPlayer;
+    public GameObject PlayerTransform1;
+    public GameObject PlayerTransform2;
+
+    //public Transform[] EnemyTransform;
+    public Transform[] StartingPosForEnemy;
+
+
     public GameObject CityBlock;
+    public Transform CityGenerationPoint;
+    public float CityGenerationXOffset;
+
+
     public float offset;
     public float MinX;
     public float MaxX;
     public float MinY;
+
+
     public float _resetTime;
-    public GameObject LevelIsLoading;
+    //public GameObject LevelIsLoading;
 
     private int _direction;
     private bool _generateRoom = true;
@@ -31,31 +42,14 @@ public class LevelGeneration : MonoBehaviour
 
 
 
-    void Awake()
-    {
-        //LevelIsLoading.SetActive(true);
-    }
-
-
     void Start()
     {
-
-        transform.position = StartingPosForEnemy[Random.Range(0, StartingPosForEnemy.Length)].position;
-
-
-        for (int i = 0; i < EnemyTransform.Length; i++)
-        {
-            EnemyTransform[i].position = StartingPosForEnemy[Random.Range(0, StartingPosForEnemy.Length)].position;
-        }
-
-
-
-        _direction = Random.Range(1, 5);
+        //_direction = Random.Range(1, 5);
     }
 
     void Update()
     {
-        if (_timeToGenerateRoom < 0 && _generateRoom) 
+        /*if (_timeToGenerateRoom < 0 && _generateRoom) 
         {
             Generate();
             _timeToGenerateRoom = _resetTime;
@@ -68,7 +62,7 @@ public class LevelGeneration : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+        }*/
     }
 
     private void Generate()
@@ -203,39 +197,59 @@ public class LevelGeneration : MonoBehaviour
     }
 
 
-    private void CitySpawnPoint()
-    {
-        for (int i = 0; i < StartingPosForPlayer.Count; i++)
-        {
-            if (StartingPosForPlayer[i].position == transform.position)
-            {
-                StartingPosForPlayer.RemoveAt(i);
-            }
-        }
-
-        int rand = Random.Range(0, StartingPosForPlayer.Count);
-
-        StartingPosForPlayer[rand].gameObject.tag = "Untagged";
-
-        Instantiate(CityBlock, StartingPosForPlayer[rand].position,
-            Quaternion.identity);
-
-    }
-
     private void GenerateOthers()
     {
 
 
-        PlayerTransform.transform.position = transform.position;
-        CitySpawnPoint();
+        
+        GenerateCity();
 
-        Debug.Log(AllRoomPoint.Count);
+        GeneratePlayerPosition();
+
+
         foreach (var room in AllRoomPoint)
         {
             Instantiate(Rooms[Random.Range(0, Rooms.Length)], room.transform.position, Quaternion.identity);
         }
 
-        LevelIsLoading.SetActive(false);
+    }
+
+
+    [ContextMenu("Generate City")]
+    void GenerateCity()
+    {
+        Instantiate(CityBlock, CityGenerationPoint.position, Quaternion.identity);
+    }
+
+    [ContextMenu("Generate Player")]
+
+    void GeneratePlayerPosition()
+    {
+        PlayerTransform1.transform.position = new Vector3(CityGenerationPoint.position.x - CityGenerationXOffset,
+            CityGenerationPoint.position.y, CityGenerationPoint.position.z);
+
+        PlayerTransform2.transform.position = new Vector3(CityGenerationPoint.position.x + CityGenerationXOffset,
+            CityGenerationPoint.position.y, CityGenerationPoint.position.z);
 
     }
+
+    [ContextMenu("Generate Room")]
+    void GenerateRoom()
+    {
+        foreach (var room in AllRoomPoint)
+        {
+            Instantiate(Rooms[Random.Range(0, Rooms.Length)], room.transform.position, Quaternion.identity);
+        }
+    }
+
+    [ContextMenu("Generate Enemy")]
+    void GenerateEnemy()
+    {
+        for (int i = 0; i < StartingPosForEnemy.Length; i++)
+        {
+            
+        }
+    }
+
+
 }
