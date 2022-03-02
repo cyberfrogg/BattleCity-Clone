@@ -1,8 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameUtils;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
+using Cysharp.Threading.Tasks;
+
 
 // ReSharper disable All
 
@@ -23,11 +28,18 @@ public class LevelGeneration : MonoBehaviour
     public Transform CityGenerationPoint;
     public float CityGenerationXOffset;
 
+    public GameObject[] PlayerSpawner;
+
 
     public float offset;
     public float MinX;
     public float MaxX;
     public float MinY;
+
+
+    public Collider2D[] blocksForEnemy;
+    public Collider2D[] blocksForPlayer;
+    public Waves wave;
 
 
     public float _resetTime;
@@ -221,10 +233,72 @@ public class LevelGeneration : MonoBehaviour
         Instantiate(CityBlock, CityGenerationPoint.position, Quaternion.identity);
     }
 
+    
+
+    [ContextMenu("Generate Room")]
+    async void GenerateRoom()
+    {
+        foreach (var room in AllRoomPoint)
+        {
+            Instantiate(Rooms[Random.Range(0, Rooms.Length)], room.transform.position, Quaternion.identity);
+            await UniTask.Delay(TimeSpan.FromSeconds(1f), ignoreTimeScale: false);
+        }
+    }
+
+    [ContextMenu("Destroy Block")]
+    void DestroyBlock()
+    {
+        for (int i = 0; i < StartingPosForEnemy.Length; i++)
+        {
+            blocksForEnemy = Physics2D.OverlapCircleAll(StartingPosForEnemy[i].position, .5f);
+
+            if (blocksForEnemy != null)
+            {
+                foreach (var block in blocksForEnemy)
+                {
+                    if(!block.gameObject.CompareTag("barrier"))
+                        Destroy(block.gameObject);
+                }
+            }
+        }
+
+        int sign = 1;
+
+        for (int i = 0; i < 2; i++)
+        {
+            sign = -sign;
+            blocksForPlayer = Physics2D.OverlapCircleAll(new Vector3(CityGenerationPoint.position.x - CityGenerationXOffset*sign,
+                CityGenerationPoint.position.y, CityGenerationPoint.position.z), Random.Range(.5f,2f));
+
+            if (blocksForPlayer != null)
+            {
+                foreach (var block in blocksForPlayer)
+                {
+                    if (!block.gameObject.CompareTag("barrier") && !block.gameObject.CompareTag("Player"))
+                        Destroy(block.gameObject);
+                }
+            }
+        }
+    }
+
     [ContextMenu("Generate Player")]
 
-    void GeneratePlayerPosition()
+    async void GeneratePlayerPosition()
     {
+        foreach (var spawner in PlayerSpawner)
+        {
+            spawner.GetComponent<Spawner>().AnimationObject.SetActive(true);
+        }
+
+        await UniTask.Delay(TimeSpan.FromSeconds(1.5f), ignoreTimeScale: false);
+
+
+        foreach (var spawner in PlayerSpawner)
+        {
+            spawner.GetComponent<Spawner>().AnimationObject.SetActive(false);
+        }
+
+
         PlayerTransform1.transform.position = new Vector3(CityGenerationPoint.position.x - CityGenerationXOffset,
             CityGenerationPoint.position.y, CityGenerationPoint.position.z);
 
@@ -233,22 +307,10 @@ public class LevelGeneration : MonoBehaviour
 
     }
 
-    [ContextMenu("Generate Room")]
-    void GenerateRoom()
+    [ContextMenu("Generate Enemy Wave")]
+    void GenerateWave()
     {
-        foreach (var room in AllRoomPoint)
-        {
-            Instantiate(Rooms[Random.Range(0, Rooms.Length)], room.transform.position, Quaternion.identity);
-        }
-    }
-
-    [ContextMenu("Generate Enemy")]
-    void GenerateEnemy()
-    {
-        for (int i = 0; i < StartingPosForEnemy.Length; i++)
-        {
-            
-        }
+        wave.WaveGeneration = true;
     }
 
 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2661605824169579149}
   m_Layer: 0
   m_Name: CityBlock
-  m_TagString: Untagged
+  m_TagString: barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2848987701961367900}
   m_Layer: 0
   m_Name: block_steelwall_full
-  m_TagString: Untagged
+  m_TagString: barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,9 +171,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2661605824169579136}
     m_Modifications:
+    - target: {fileID: 1917556005529668122, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556005554111559, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
     - target: {fileID: 1917556006623698950, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
       propertyPath: m_Name
       value: BrickWallBlock (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556006623698950, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
       objectReference: {fileID: 0}
     - target: {fileID: 1917556006623698953, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
       propertyPath: m_RootOrder
@@ -231,6 +243,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1917556007015758555, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556007327849248, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
 --- !u!4 &389628287921511767 stripped
@@ -245,9 +265,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2661605824169579136}
     m_Modifications:
+    - target: {fileID: 1917556005529668122, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556005554111559, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
     - target: {fileID: 1917556006623698950, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
       propertyPath: m_Name
       value: BrickWallBlock (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556006623698950, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
       objectReference: {fileID: 0}
     - target: {fileID: 1917556006623698953, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
       propertyPath: m_RootOrder
@@ -305,6 +337,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1917556007015758555, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556007327849248, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
 --- !u!4 &5930725326756128301 stripped
@@ -319,9 +359,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2661605824169579136}
     m_Modifications:
+    - target: {fileID: 1917556005529668122, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556005554111559, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
     - target: {fileID: 1917556006623698950, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
       propertyPath: m_Name
       value: BrickWallBlock (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556006623698950, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
       objectReference: {fileID: 0}
     - target: {fileID: 1917556006623698953, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
       propertyPath: m_RootOrder
@@ -379,6 +431,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1917556007015758555, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556007327849248, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
 --- !u!4 &5666199040901637673 stripped
@@ -393,9 +453,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2661605824169579136}
     m_Modifications:
+    - target: {fileID: 1917556005529668122, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556005554111559, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
     - target: {fileID: 1917556006623698950, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
       propertyPath: m_Name
       value: BrickWallBlock (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556006623698950, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
       objectReference: {fileID: 0}
     - target: {fileID: 1917556006623698953, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
       propertyPath: m_RootOrder
@@ -453,6 +525,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1917556007015758555, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556007327849248, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
 --- !u!4 &8850797170228853806 stripped
@@ -467,9 +547,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2661605824169579136}
     m_Modifications:
+    - target: {fileID: 1917556005529668122, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556005554111559, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
     - target: {fileID: 1917556006623698950, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
       propertyPath: m_Name
       value: BrickWallBlock (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556006623698950, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
       objectReference: {fileID: 0}
     - target: {fileID: 1917556006623698953, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
       propertyPath: m_RootOrder
@@ -527,6 +619,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1917556007015758555, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556007327849248, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
 --- !u!4 &8207437606826912789 stripped
@@ -541,9 +641,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2661605824169579136}
     m_Modifications:
+    - target: {fileID: 1917556005529668122, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556005554111559, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
     - target: {fileID: 1917556006623698950, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
       propertyPath: m_Name
       value: BrickWallBlock (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556006623698950, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
       objectReference: {fileID: 0}
     - target: {fileID: 1917556006623698953, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
       propertyPath: m_RootOrder
@@ -601,6 +713,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1917556007015758555, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556007327849248, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
 --- !u!4 &8039653529487793570 stripped
@@ -615,9 +735,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2661605824169579136}
     m_Modifications:
+    - target: {fileID: 1917556005529668122, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556005554111559, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
     - target: {fileID: 1917556006623698950, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
       propertyPath: m_Name
       value: BrickWallBlock (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556006623698950, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
       objectReference: {fileID: 0}
     - target: {fileID: 1917556006623698953, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
       propertyPath: m_RootOrder
@@ -675,6 +807,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1917556007015758555, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556007327849248, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
 --- !u!4 &7921326188777726816 stripped
@@ -689,9 +829,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2661605824169579136}
     m_Modifications:
+    - target: {fileID: 1917556005529668122, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556005554111559, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
     - target: {fileID: 1917556006623698950, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
       propertyPath: m_Name
       value: BrickWallBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556006623698950, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
       objectReference: {fileID: 0}
     - target: {fileID: 1917556006623698953, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
       propertyPath: m_RootOrder
@@ -748,6 +900,14 @@ PrefabInstance:
     - target: {fileID: 1917556006623698953, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556007015758555, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917556007327849248, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_TagString
+      value: barrier
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}

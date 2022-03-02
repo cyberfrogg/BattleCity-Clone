@@ -6,6 +6,7 @@ TagManager:
   tags:
   - StartingPos
   - dummy
+  - barrier
   layers:
   - Default
   - TransparentFX
