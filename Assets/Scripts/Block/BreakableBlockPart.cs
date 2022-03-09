@@ -20,7 +20,8 @@ namespace Blocks
 
             if (!Self.gameObject.CompareTag("dummy") && thing.gameObject.CompareTag("dummy"))
             {
-                Destroy(Self.gameObject);
+                Self.gameObject.SetActive(false);
+                //Destroy(Self.gameObject);
             }
         }
     }

@@ -11,6 +11,14 @@ namespace Entities
         private Vector2 _followDirection;
         private bool _isFollowing;
 
+        public bool CanDestroySteel;
+
+        public override void Start()
+        {
+            base.Start();
+            //SetBulletDamage();
+        }
+
         /// <summary>
         /// Stars bullet to follow direction
         /// </summary>
@@ -64,6 +72,16 @@ namespace Entities
                     Destroy(gameObject);
                 }
             }
+        }
+
+        public void SetBulletDamage(int damage = 1)
+        {
+            DamageCount = damage;
+        }
+
+        public int GetBulletDamage()
+        {
+            return DamageCount;
         }
     }
 }

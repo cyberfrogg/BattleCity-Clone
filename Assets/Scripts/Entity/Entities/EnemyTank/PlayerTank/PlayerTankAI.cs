@@ -10,7 +10,9 @@ namespace Entities
         {
             base.UpdateAI();
 
-            (Self as Tank).Move(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
+            //(Self as Tank).Move(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
+
+            (Self as Tank).Move(new Vector2(Input.GetAxis("KeyBoardHorizontalMovement"), Input.GetAxis("KeyBoardVerticalMovement")));
 
             if (Input.GetButtonDown("Fire1"))
             {

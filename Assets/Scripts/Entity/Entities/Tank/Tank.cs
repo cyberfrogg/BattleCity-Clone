@@ -23,17 +23,20 @@ namespace Entities
             }
         }
         public float MoveSpeed;
-        public int Health { get; private set; }
+        public int Health { get; set; }
         public bool IsDead { get; private set; }
 
         [SerializeField] private int _maxHealth;
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private Transform _spriteContainer;
         [SerializeField] private Gun _gun;
+        protected PlayerPowerUps _powerUps;
+
 
         public override void Awake()
         {
             base.Awake();
+            _powerUps = GameObject.FindGameObjectWithTag("Game").GetComponent<PlayerPowerUps>();
 
             Health = _maxHealth;
 
@@ -55,6 +58,13 @@ namespace Entities
             {
                 LookAt(moveVector);
             }
+
+        }
+
+        public virtual void StopMoving()
+        {
+            _rigidbody.velocity = Vector2.zero;
+
         }
 
         /// <summary>
@@ -66,7 +76,7 @@ namespace Entities
         {
             if(damageCount <= 0)
             {
-                throw new ArgumentException("Damage must be greater than 0");
+                Debug.Log("No damage done");
             }
 
             Health -= damageCount;

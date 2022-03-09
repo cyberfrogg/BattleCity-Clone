@@ -8,7 +8,7 @@ namespace Guns
     /// </summary>
     public class Gun : MonoBehaviour
     {
-        [SerializeField] private Bullet _bulletPrefab;
+        [SerializeField] protected Bullet _bulletPrefab;
 
         /// <summary>
         /// Self tank
@@ -22,6 +22,19 @@ namespace Guns
         public virtual void Init(Tank tank)
         {
             Tank = tank;
+        }
+
+        void Start()
+        {
+            _bulletPrefab.CanDestroySteel = false;
+            Debug.Log($"Can destroy :  {_bulletPrefab.CanDestroySteel}");
+
+        }
+
+
+        public virtual void Update()
+        {
+            Debug.Log($"Can destroy :  {_bulletPrefab.CanDestroySteel} Instance type: {this.GetType()}");
         }
 
         /// <summary>

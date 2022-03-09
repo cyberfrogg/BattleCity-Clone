@@ -1,6 +1,6 @@
 namespace Blocks
 {
-    public class SteelWallBlock : Block
+    public class SteelWallBlock : BreakableBlock
     {
 
     }   

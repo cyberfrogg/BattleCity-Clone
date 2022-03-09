@@ -7,6 +7,8 @@ TagManager:
   - StartingPos
   - dummy
   - barrier
+  - Helmet
+  - Game
   layers:
   - Default
   - TransparentFX
@@ -15,7 +17,7 @@ TagManager:
   - Water
   - UI
   - Room
-  - 
+  - Player
   - 
   - 
   - 

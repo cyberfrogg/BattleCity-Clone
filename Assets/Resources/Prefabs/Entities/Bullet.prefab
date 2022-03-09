@@ -128,7 +128,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a92beb807b50f6f45a197aab8fa2000f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AI:
+    Self: {fileID: 0}
+  Owner: {fileID: 0}
+  DamageCount: 1
   _bulletSpeed: 4
+  CanDestroySteel: 0
+  isTrue: 0
 --- !u!61 &3027030715251331787
 BoxCollider2D:
   m_ObjectHideFlags: 0

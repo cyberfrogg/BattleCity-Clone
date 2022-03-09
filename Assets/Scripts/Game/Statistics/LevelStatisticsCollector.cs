@@ -8,6 +8,7 @@ namespace Statistics
     /// </summary>
     public class LevelStatisticsCollector : Thing
     {
+        
         public StatisticsData Statistics { get; private set; } = new StatisticsData();
 
         [SerializeField] private StatisticsDisplay _display;
@@ -17,13 +18,15 @@ namespace Statistics
         {
             base.Awake();
 
-            Statistics.LevelRemainingPlayerTanksCount = 12;
+            Statistics.LevelRemainingPlayerTanksCount = 5;
+            
         }
 
-        public void OnTankKilled()
+        public void OnTankKilled(int score)
         {
+            Debug.Log("called score : "+ score);
             Statistics.TanksKilled++;
-            Statistics.LevelScore += 1 * _tankKillModifier;
+            Statistics.LevelScore += 1 * score;
 
             _display.UpdateDisplay(Statistics);
         }
@@ -38,6 +41,11 @@ namespace Statistics
             {
                 Game.Instance.Triggers.OnPlayerTanksEnd.Invoke();
             }
+        }
+
+        public void IncreaseLife()
+        {
+            Statistics.LevelRemainingPlayerTanksCount++;
         }
     }
 }

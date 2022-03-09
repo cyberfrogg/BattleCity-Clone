@@ -16,6 +16,7 @@ namespace GameUtils
         [SerializeField]private bool _generateAnimationStop;
 
         [SerializeField]private List<Tank> _spawnedTanks = new List<Tank>();
+        [SerializeField]private int _waveCount = 1;
 
         public override void Start()
         {
@@ -28,20 +29,25 @@ namespace GameUtils
 
             if(_spawnedTanks.Count <= 0 && WaveGeneration)
             {
-                if(!_generateAnimationStop)
+                
+
+                if (!_generateAnimationStop)
                     GenerateEnemyAnimation();
 
                 if (_generateWave)
                 {
                     for (int i = 0; i < _tanksPerWave; i++)
                     {
-                        Tank spawnedTank = _spawners[i].Spawn() as Tank;
+                        Tank spawnedTank = _spawners[i].Spawn(_waveCount) as Tank;
                         _spawnedTanks.Add(spawnedTank);
                     }
 
+                    _waveCount++;
                     _generateWave = false;
                     _generateAnimationStop = false;
                 }
+
+                
             }
 
             foreach (Tank item in _spawnedTanks)
@@ -74,6 +80,18 @@ namespace GameUtils
 
             _generateWave = true;
 
+        }
+
+        [ContextMenu("Destroy Waves")]
+        public void DestroyWave()
+        {
+            foreach (var tank in _spawnedTanks)
+            {
+                Game.Instance.Triggers.OnTankKilled.Invoke(0);
+                Destroy(tank.gameObject);
+            }
+
+            _spawnedTanks.Clear();
         }
     }
 }

@@ -17,10 +17,10 @@ namespace SceneEvents
 
             _levelOverScreen.gameObject.SetActive(true);
 
-            loadNextLevel();
+            LoadNextLevel();
         }
 
-        private async void loadNextLevel()
+        private async void LoadNextLevel()
         {
             await Task.Delay(_nextLevelDelay);
             SceneManager.LoadScene(_nextLevelScene);

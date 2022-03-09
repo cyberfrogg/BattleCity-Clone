@@ -24,8 +24,10 @@ namespace GameUtils
             Triggers.OnTankKilled.AddListener(validateDoneScore);
         }
 
-        private void validateDoneScore()
+        private void validateDoneScore(int score)
         {
+            StatisticsCollector.OnTankKilled(score);
+
             if(StatisticsCollector.Statistics.TanksKilled >= _tanksToKill)
             {
                 Triggers.OnLevelDone.Invoke();

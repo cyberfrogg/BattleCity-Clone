@@ -10,9 +10,14 @@ namespace GameUtils
     public class GameTriggers
     {
         public UnityEvent OnCityBlockDied;
-        public UnityEvent OnTankKilled;
+        public MyIntEvent OnTankKilled;
         public UnityEvent OnPlayerKilled;
         public UnityEvent OnPlayerTanksEnd;
         public UnityEvent OnLevelDone;
+    }
+
+    [System.Serializable]
+    public class MyIntEvent : UnityEvent<int>
+    {
     }
 }

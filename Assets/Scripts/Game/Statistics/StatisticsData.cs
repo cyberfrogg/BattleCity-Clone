@@ -5,13 +5,13 @@ namespace Statistics
     /// <summary>
     /// Main data struct of statistics
     /// </summary>
-    [SerializeField]
+    [System.Serializable]
     public class StatisticsData
     {
         public int TotalScore;
         public int TanksKilled;
 
         public int LevelScore;
-        public int LevelRemainingPlayerTanksCount = 12;
+        public int LevelRemainingPlayerTanksCount = 5;
     }
 }

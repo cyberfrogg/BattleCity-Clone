@@ -82,7 +82,7 @@ public class Thing : MonoBehaviour, ICloneable
         }
         else
         {
-            throw new MissingReferenceException("No [Thing] class on collided object");
+            //throw new MissingReferenceException("No [Thing] class on collided object");
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
@@ -95,7 +95,7 @@ public class Thing : MonoBehaviour, ICloneable
         }
         else
         {
-            throw new MissingReferenceException("No [Thing] class on collided object");
+            //throw new MissingReferenceException("No [Thing] class on collided object");
         }
     }
 }

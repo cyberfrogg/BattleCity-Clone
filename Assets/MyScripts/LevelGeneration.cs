@@ -1,12 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using GameUtils;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
-using Cysharp.Threading.Tasks;
 
 
 // ReSharper disable All
@@ -52,10 +50,13 @@ public class LevelGeneration : MonoBehaviour
 
     private float _timeToGenerateRoom;
 
+    public UnityEvent GeneratePlayer;
 
 
     void Start()
     {
+
+        GenerateCity();
         //_direction = Random.Range(1, 5);
     }
 
@@ -81,9 +82,9 @@ public class LevelGeneration : MonoBehaviour
     {
         if (_direction == 1 || _direction == 2)
             RightMovement();
-        else if(_direction == 3 || _direction == 4)
+        else if (_direction == 3 || _direction == 4)
             LeftMovement();
-        else if(_direction == 5)
+        else if (_direction == 5)
             DownMovement();
 
     }
@@ -159,7 +160,7 @@ public class LevelGeneration : MonoBehaviour
             DownCounter = 0;
             CurrentRoom = Instantiate(Rooms[Random.Range(0, Rooms.Length)], transform.position, Quaternion.identity);
         }
-            
+
         else
         {
             if (CurrentRoom != null)
@@ -213,7 +214,7 @@ public class LevelGeneration : MonoBehaviour
     {
 
 
-        
+
         GenerateCity();
 
         GeneratePlayerPosition();
@@ -231,9 +232,11 @@ public class LevelGeneration : MonoBehaviour
     void GenerateCity()
     {
         Instantiate(CityBlock, CityGenerationPoint.position, Quaternion.identity);
+
+        GenerateRoom();
     }
 
-    
+
 
     [ContextMenu("Generate Room")]
     async void GenerateRoom()
@@ -243,6 +246,8 @@ public class LevelGeneration : MonoBehaviour
             Instantiate(Rooms[Random.Range(0, Rooms.Length)], room.transform.position, Quaternion.identity);
             await UniTask.Delay(TimeSpan.FromSeconds(1f), ignoreTimeScale: false);
         }
+
+        DestroyBlock();
     }
 
     [ContextMenu("Destroy Block")]
@@ -256,7 +261,7 @@ public class LevelGeneration : MonoBehaviour
             {
                 foreach (var block in blocksForEnemy)
                 {
-                    if(!block.gameObject.CompareTag("barrier"))
+                    if (!block.gameObject.CompareTag("barrier"))
                         Destroy(block.gameObject);
                 }
             }
@@ -267,8 +272,8 @@ public class LevelGeneration : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             sign = -sign;
-            blocksForPlayer = Physics2D.OverlapCircleAll(new Vector3(CityGenerationPoint.position.x - CityGenerationXOffset*sign,
-                CityGenerationPoint.position.y, CityGenerationPoint.position.z), Random.Range(.5f,2f));
+            blocksForPlayer = Physics2D.OverlapCircleAll(new Vector3(CityGenerationPoint.position.x - CityGenerationXOffset * sign,
+                CityGenerationPoint.position.y, CityGenerationPoint.position.z), Random.Range(.5f, 2f));
 
             if (blocksForPlayer != null)
             {
@@ -279,13 +284,18 @@ public class LevelGeneration : MonoBehaviour
                 }
             }
         }
+
+        GeneratePlayerPosition();
     }
 
     [ContextMenu("Generate Player")]
 
     async void GeneratePlayerPosition()
     {
-        foreach (var spawner in PlayerSpawner)
+
+        GeneratePlayer?.Invoke();
+
+        /*foreach (var spawner in PlayerSpawner)
         {
             spawner.GetComponent<Spawner>().AnimationObject.SetActive(true);
         }
@@ -296,14 +306,18 @@ public class LevelGeneration : MonoBehaviour
         foreach (var spawner in PlayerSpawner)
         {
             spawner.GetComponent<Spawner>().AnimationObject.SetActive(false);
-        }
+        }*/
 
 
-        PlayerTransform1.transform.position = new Vector3(CityGenerationPoint.position.x - CityGenerationXOffset,
+
+
+        /*PlayerTransform1.transform.position = new Vector3(CityGenerationPoint.position.x - CityGenerationXOffset,
             CityGenerationPoint.position.y, CityGenerationPoint.position.z);
 
         PlayerTransform2.transform.position = new Vector3(CityGenerationPoint.position.x + CityGenerationXOffset,
-            CityGenerationPoint.position.y, CityGenerationPoint.position.z);
+            CityGenerationPoint.position.y, CityGenerationPoint.position.z);*/
+
+        GenerateWave();
 
     }
 
@@ -311,6 +325,11 @@ public class LevelGeneration : MonoBehaviour
     void GenerateWave()
     {
         wave.WaveGeneration = true;
+    }
+
+    void DestroyAllBlock()
+    {
+
     }
 
 
