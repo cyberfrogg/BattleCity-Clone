@@ -51,12 +51,22 @@ public class LevelGeneration : MonoBehaviour
     private float _timeToGenerateRoom;
 
     public UnityEvent GeneratePlayer;
+    public AudioClip LevelStartAudio;
+    public AudioClip PlayerIdleAudio;
 
-
-    void Start()
+    void Awake()
     {
 
+    }
+
+    async void Start()
+    {
+
+
         GenerateCity();
+        AudioManager.Instance.PlayBGM(LevelStartAudio);
+        await UniTask.Delay(TimeSpan.FromSeconds(LevelStartAudio.length + .5f), ignoreTimeScale: false);
+        AudioManager.Instance.PlayBackGroundSFX(PlayerIdleAudio);
         //_direction = Random.Range(1, 5);
     }
 

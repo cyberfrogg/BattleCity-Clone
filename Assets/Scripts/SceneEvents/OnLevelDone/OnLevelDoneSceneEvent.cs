@@ -1,13 +1,20 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
+using GameUtils;
+using Guns;
+using Statistics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.InputSystem;
+
 
 namespace SceneEvents
 {
     public class OnLevelDoneSceneEvent : SceneEvent
     {
-        [SerializeField] private string _nextLevelScene;
-        [SerializeField] private int _nextLevelDelay = 5000;
+
         [SerializeField] private GameObject _levelOverScreen;
 
 
@@ -16,14 +23,13 @@ namespace SceneEvents
             base.TriggerEvent();
 
             _levelOverScreen.gameObject.SetActive(true);
+            AudioManager.Instance.StopAll();
 
-            LoadNextLevel();
+            _levelOverScreen.GetComponent<LevelEndUI>().Initialization();
         }
 
-        private async void LoadNextLevel()
-        {
-            await Task.Delay(_nextLevelDelay);
-            SceneManager.LoadScene(_nextLevelScene);
-        }
+
+
+
     }
 }

@@ -10,6 +10,7 @@ public class PlayerPowerUps : MonoBehaviour
     public bool Star;
     public bool Tank;
     public bool Timer;
+    public bool LevelCleared;
 
     private GameObject _helmet;
     /*private GameObject _grenade;

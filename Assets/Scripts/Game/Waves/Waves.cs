@@ -18,9 +18,12 @@ namespace GameUtils
         [SerializeField]private List<Tank> _spawnedTanks = new List<Tank>();
         [SerializeField]private int _waveCount = 1;
 
+        private List<int> _listOfRandomTank = new List<int>();
+
         public override void Start()
         {
             base.Start();
+            SpawnRandomTanks();
         }
 
         public override  void Update()
@@ -38,7 +41,12 @@ namespace GameUtils
                 {
                     for (int i = 0; i < _tanksPerWave; i++)
                     {
-                        Tank spawnedTank = _spawners[i].Spawn(_waveCount) as Tank;
+                        int GetTankId = GetRandomTank();
+
+                        Tank spawnedTank = _spawners[i].Spawn(_listOfRandomTank[GetTankId]) as Tank;
+
+                        RemoveTankFromList(GetTankId);
+
                         _spawnedTanks.Add(spawnedTank);
                     }
 
@@ -92,6 +100,67 @@ namespace GameUtils
             }
 
             _spawnedTanks.Clear();
+        }
+
+        public void SpawnRandomTanks()
+        {
+            int levelId = PlayerPrefs.GetInt("StageCount");
+            
+            int armorTankCount = Mathf.Clamp(Mathf.FloorToInt(Random.Range(.2f,.6f)  * levelId), 0, 10);
+            int fastTankCount = Mathf.Clamp(Mathf.FloorToInt(Random.Range(.6f, .8f) * levelId), 0, 15);
+            int powerTankCount = Mathf.Clamp(Mathf.FloorToInt(Random.Range(.8f, .9f) * levelId), 0, 5);
+            int basicTankCount = Mathf.Abs(Game.Instance._tanksToKill - armorTankCount + powerTankCount + fastTankCount);
+
+
+
+            for (int i = 0; i < armorTankCount; i++)
+            {
+                _listOfRandomTank.Add(3);
+            }
+
+            for (int i = 0; i < powerTankCount; i++)
+            {
+                _listOfRandomTank.Add(2);
+            }
+
+            for (int i = 0; i < fastTankCount; i++)
+            {
+                _listOfRandomTank.Add(1);
+            }
+
+            for (int i = 0; i < basicTankCount; i++)
+            {
+                _listOfRandomTank.Add(0);
+            }
+
+            Debug.Log("Spawned tank count "+ _listOfRandomTank.Count );
+
+            if (_listOfRandomTank.Count - Game.Instance._tanksToKill > 0)
+            {
+                _listOfRandomTank.RemoveRange(Game.Instance._tanksToKill, _listOfRandomTank.Count - Game.Instance._tanksToKill);
+            }
+
+            Debug.Log("Spawned tank count " + _listOfRandomTank.Count);
+
+        }
+
+        public int GetRandomTank()
+        {
+            if (_listOfRandomTank.Count > 1)
+            {
+                return _listOfRandomTank[Random.Range(0, _listOfRandomTank.Count)];
+            }
+
+            return 0;
+
+        }
+
+        public void RemoveTankFromList(int id)
+        {
+            
+            _listOfRandomTank.RemoveAt(id);
+
+            Debug.Log("Spawned tank count " + _listOfRandomTank.Count);
         }
     }
 }

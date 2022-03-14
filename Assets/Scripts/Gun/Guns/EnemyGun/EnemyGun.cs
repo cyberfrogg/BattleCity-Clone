@@ -1,4 +1,5 @@
 using Entities;
+using GameUtils;
 using UnityEngine;
 
 namespace Guns
@@ -24,6 +25,9 @@ namespace Guns
         {
             if (!GameObject.FindGameObjectWithTag("Game").GetComponent<PlayerPowerUps>().Timer)
             {
+                /*if (Game.Instance.isLevelDone)
+                    return;*/
+
                 if (_nextFiring <= 0)
                 {
                     _nextFiring = FiringRate;
@@ -31,6 +35,7 @@ namespace Guns
                     bullet.transform.position = Tank.transform.position + (Tank.transform.up * _shootOffsetDistance);
                     bullet.Follow(Tank.transform.up, Tank);
                     bullet.CanDestroySteel = _destroySteel;
+                    bullet.Type = BulletType.EnemyBullet;
                 }
             }
 

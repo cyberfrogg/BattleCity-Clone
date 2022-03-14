@@ -1,6 +1,7 @@
 using System;
 using Cysharp.Threading.Tasks;
 using Entities;
+using GameUtils;
 using UnityEngine;
 
 namespace Guns
@@ -17,6 +18,10 @@ namespace Guns
         [SerializeField] private int _firingCount;
         [SerializeField] private bool _destroySteel;
 
+        void Start()
+        {
+            ChangeGunPower(GetGunTier());
+        }
 
         public override void Update()
         {
@@ -27,15 +32,19 @@ namespace Guns
 
         public override async void Shoot()
         {
+
+
             if (_nextFiring <= 0)
             {
                 _nextFiring = FiringRate;
                 for (int i = 0; i < _firingCount; i++)
                 {
+                    AudioManager.Instance.PlaySFX(TankShootingSfx);
                     Bullet bullet = SpawnBullet();
                     bullet.transform.position = Tank.transform.position + (Tank.transform.up * _shootOffsetDistance);
                     bullet.Follow(Tank.transform.up, Tank);
                     bullet.CanDestroySteel = _destroySteel;
+                    bullet.Type = BulletType.PlayerBullet;
                     await UniTask.Delay(TimeSpan.FromSeconds(.2f));
                 }
             }
@@ -47,24 +56,37 @@ namespace Guns
         public void ChangeTier()
         {
             _gunTier++;
+            PlayerPrefs.SetInt("GunTier", _gunTier);
             ChangeGunPower(_gunTier);
         }
 
         private void ChangeGunPower(int tier)
         {
-            if (tier == 1)
+            if (tier >= 1)
             {
-                FiringRate = 1f;
+                FiringRate = .2f;
             }
 
-            if (tier == 2)
+            if (tier >= 2)
             {
                 _firingCount = 2;
             }
 
-            if (tier == 3)
+            if (tier >= 3)
             {
                 _destroySteel = true;
+            }
+        }
+
+        private int GetGunTier()
+        {
+            if (PlayerPrefs.HasKey("GunTier"))
+            {
+                return PlayerPrefs.GetInt("GunTier");
+            }
+            else
+            {
+                return 0;
             }
         }
     }

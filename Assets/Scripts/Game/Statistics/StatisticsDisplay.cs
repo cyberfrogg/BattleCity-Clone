@@ -11,6 +11,8 @@ namespace Statistics
         [SerializeField] private TMP_Text[] _totalScoreTexts;
         [SerializeField] private TMP_Text[] _levelScoreTexts;
         [SerializeField] private TMP_Text[] _tanksKilledTexts;
+        //[SerializeField] private GameObject _playerLifePrefab;
+        //[SerializeField] private GameObject _playerLifePanel;
 
         [Space]
 
@@ -24,7 +26,7 @@ namespace Statistics
         {
             foreach (TMP_Text item in _totalScoreTexts)
             {
-                item.text = dataToSisplay.TotalScore.ToString("000000");
+                item.text =  dataToSisplay.TotalScore.ToString("000000");
             }
 
             foreach (TMP_Text item in _levelScoreTexts)
@@ -42,6 +44,11 @@ namespace Statistics
 
         private void displayPlayerTanksCount(StatisticsData dataToSisplay)
         {
+            /*for (int i = 0; i < dataToSisplay.LevelRemainingPlayerTanksCount; i++)
+            {
+                Instantiate(_playerLifePrefab, _playerLifePanel.transform.position, Quaternion.identity);
+            }*/
+
             foreach (Transform item in _playerRemainingTanksUIContainer.transform)
             {
                 item.gameObject.SetActive(false);

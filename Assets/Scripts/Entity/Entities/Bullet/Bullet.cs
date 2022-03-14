@@ -1,3 +1,5 @@
+using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Entities
@@ -12,9 +14,13 @@ namespace Entities
         private bool _isFollowing;
 
         public bool CanDestroySteel;
+        public BulletEffect BulletEffect;
+        public BulletType Type;
+        
 
         public override void Start()
         {
+
             base.Start();
             //SetBulletDamage();
         }
@@ -56,7 +62,8 @@ namespace Entities
         {
             base.OnThingCollidedEnter(thing);
 
-            if(Owner != null)
+
+            if (Owner != null)
             {
                 if(thing != Owner)
                 {
@@ -69,6 +76,7 @@ namespace Entities
 
                     }
 
+                    Instantiate(BulletEffect, transform.position, Quaternion.identity);
                     Destroy(gameObject);
                 }
             }
@@ -83,5 +91,15 @@ namespace Entities
         {
             return DamageCount;
         }
+
+        
+    }
+
+    public enum BulletType
+    {
+        PlayerBullet,
+        EnemyBullet
     }
 }
+
+

@@ -12,6 +12,6 @@ namespace Statistics
         public int TanksKilled;
 
         public int LevelScore;
-        public int LevelRemainingPlayerTanksCount = 5;
+        public int LevelRemainingPlayerTanksCount;
     }
 }

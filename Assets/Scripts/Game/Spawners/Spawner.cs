@@ -16,18 +16,23 @@ namespace GameUtils
         [SerializeField] private Transform _spawnPoint;
         public GameObject AnimationObject;
         public Thing Tank;
-        
+        private SpawnerTank _spawnerTank;
 
 
         /// <summary>
         /// Spawns thing
         /// </summary>
-        public virtual Thing Spawn(int waveCount = 1)
+        public virtual Thing Spawn(int tankId = 0)
         {
+            //_spawnerTank = new SpawnerTank();
+            //int level = GetTier();
+            //Debug.Log("LevelCount ==> "+level);
+            tankId = Mathf.Clamp(tankId, 0, _spawnObject.Length-1);
 
-            waveCount = Mathf.Clamp(waveCount, 1, _spawnObject.Length);
+            //level = Mathf.Clamp(level , 0 ,_spawnObject.Length-1);
 
-            Thing instance = Instantiate((Thing)_spawnObject[Random.Range(0,waveCount)].Clone());
+
+            Thing instance = Instantiate((Thing)_spawnObject[tankId].Clone());
 
 
             instance.transform.position = _spawnPoint != null ? _spawnPoint.position : transform.position;
@@ -51,6 +56,7 @@ namespace GameUtils
 
             Tank = Spawn();
         }
+
 
     }
 }

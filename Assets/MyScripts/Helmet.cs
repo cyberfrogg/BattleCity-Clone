@@ -10,6 +10,7 @@ public class Helmet : PickUps
     [SerializeField] private float _helmetDuration;
     private Collider2D _playerReference;
     private GameObject _helmet;
+    public Sprite[] Sprite;
     protected override void PowerUp(Collider2D player)
     {
         _helmet = GameObject.FindGameObjectWithTag("Helmet");
@@ -25,8 +26,16 @@ public class Helmet : PickUps
 
     private async void RemovePowerUp()
     {
-        
-        await UniTask.Delay(TimeSpan.FromSeconds(_helmetDuration));
+
+        int loopCount = Mathf.FloorToInt(_helmetDuration / .5f);
+
+        for (int i = 0; i < loopCount; i++)
+        {
+            _helmet.GetComponent<SpriteRenderer>().sprite = Sprite[i%Sprite.Length];
+            await UniTask.Delay(TimeSpan.FromSeconds(.5f));
+        }
+
+       
 
         _helmet.GetComponent<SpriteRenderer>().enabled = false;
         _helmet.GetComponent<BoxCollider2D>().enabled = false;

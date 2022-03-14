@@ -69,7 +69,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0028193593, y: -0.008458018}
+  m_Offset: {x: -0.0012492836, y: -0.006423652}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -80,7 +80,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.93118393, y: 0.96501565}
+  m_Size: {x: 0.88236004, y: 0.9283978}
   m_EdgeRadius: 0
 --- !u!114 &6026463467879904982
 MonoBehaviour:
@@ -101,6 +101,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 6026463467879904984}
   _spriteContainer: {fileID: 6026463468413275335}
   _gun: {fileID: 6026463467879904986}
+  TankDestroySfx: {fileID: 8300000, guid: aeeb4bd8437b89a4f855442c0eb82239, type: 3}
   _enemyTankAI:
     Self: {fileID: 0}
     _state: 0
@@ -125,6 +126,12 @@ MonoBehaviour:
           m_Calls: []
       _idleDelay: 0.3
   _killingValue: 400
+  _enemyType: 3
+  DamagedTankSprite:
+  - {fileID: 21300000, guid: 0b144b6a2894bc148afbfc7b40025bb1, type: 3}
+  - {fileID: 21300000, guid: 7b3862ce20c89514393b375c74c44675, type: 3}
+  DamagedTankAudio: {fileID: 8300000, guid: 18cc15536a3f66a4b8b4dbaff6fc22d2, type: 3}
+  TankDestroyEffect: {fileID: 701701888199236892, guid: c7819bac43e860b4f9f5af67a2abeb43, type: 3}
 --- !u!114 &6026463467879904986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,9 +145,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletPrefab: {fileID: 8042564128449866764, guid: aa04ad91aba9c2b4d8e32c9802d32827, type: 3}
+  TankShootingSfx: {fileID: 0}
   _shootOffsetDistance: 0.6
   _destroySteel: 0
-  FiringRate: 3
+  FiringRate: 0.4
 --- !u!1 &6026463468413275332
 GameObject:
   m_ObjectHideFlags: 0

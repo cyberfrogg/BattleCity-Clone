@@ -23,15 +23,18 @@ namespace Entities
             }
         }
         public float MoveSpeed;
+        [SerializeField]
         public int Health { get; set; }
         public bool IsDead { get; private set; }
 
-        [SerializeField] private int _maxHealth;
-        [SerializeField] private Rigidbody2D _rigidbody;
+        [SerializeField] protected int _maxHealth;
+        [SerializeField] protected Rigidbody2D _rigidbody;
         [SerializeField] private Transform _spriteContainer;
         [SerializeField] private Gun _gun;
         protected PlayerPowerUps _powerUps;
 
+        public AudioClip TankDestroySfx;
+ 
 
         public override void Awake()
         {
@@ -46,12 +49,16 @@ namespace Entities
             }
         }
 
+
+
+
         /// <summary>
         /// Moves self (tank)
         /// </summary>
         /// <param name="moveVector">Normolized movement vector</param>
         public virtual void Move(Vector2 moveVector)
         {
+
             _rigidbody.velocity = (moveVector * MoveSpeed);
 
             if (moveVector.x != 0 || moveVector.y != 0)
@@ -80,6 +87,7 @@ namespace Entities
             }
 
             Health -= damageCount;
+
 
             ValidateHealth(damageOwner);
         }

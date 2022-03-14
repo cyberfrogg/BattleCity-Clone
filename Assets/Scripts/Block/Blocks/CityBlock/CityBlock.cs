@@ -18,6 +18,7 @@ namespace Blocks
         private PlayerPowerUps _powerUps;
         private bool _previousState;
         private bool _currentState;
+        public AudioClip DestroyedSfx;
 
         public override void Start()
         {
@@ -65,6 +66,7 @@ namespace Blocks
             {
                 if (!_isDied)
                 {
+                    AudioManager.Instance.PlaySFX(DestroyedSfx);
                     _isDied = true;
                     Game.Instance.Triggers.OnCityBlockDied.Invoke();
                     _spriteRenderer.sprite = _deadSprite;
