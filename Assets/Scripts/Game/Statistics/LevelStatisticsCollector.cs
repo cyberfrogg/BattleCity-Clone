@@ -101,6 +101,10 @@ namespace Statistics
 
             Statistics.TotalScore += 1 * score;
 
+
+            UpdateTotalScore();
+            
+
             _display.UpdateDisplay(Statistics);
 
             ValidateScore();

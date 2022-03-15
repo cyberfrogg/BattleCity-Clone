@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using Entities;
 using UnityEngine;
 using GameUtils;
+using Statistics;
 
 namespace Blocks
 {
@@ -19,11 +20,14 @@ namespace Blocks
         private bool _previousState;
         private bool _currentState;
         public AudioClip DestroyedSfx;
+        private LevelStatisticsCollector _levelStatisticsCollector;
 
         public override void Start()
         {
             _currentState = _previousState;
             base.Start();
+            _levelStatisticsCollector =
+                GameObject.FindGameObjectWithTag("Game").GetComponent<LevelStatisticsCollector>();
             _currentHealth = _maxHealth;
             _powerUps = GameObject.FindGameObjectWithTag("Game").GetComponent<PlayerPowerUps>();
 
@@ -67,6 +71,7 @@ namespace Blocks
                 if (!_isDied)
                 {
                     AudioManager.Instance.PlaySFX(DestroyedSfx);
+                    _levelStatisticsCollector.SetHighScore();
                     _isDied = true;
                     Game.Instance.Triggers.OnCityBlockDied.Invoke();
                     _spriteRenderer.sprite = _deadSprite;

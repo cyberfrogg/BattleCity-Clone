@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ButtonSelector : MonoBehaviour
 {
     public GameObject[] ButtonGameObjects;
-    private int _activatedButton;
+    private int _activatedButton = 0;
 
     public void SelectOption(InputAction.CallbackContext context)
     {
@@ -30,15 +30,16 @@ public class ButtonSelector : MonoBehaviour
 
     public void MoveUp()
     {
-        ButtonGameObjects[1].SetActive(false);
-        ButtonGameObjects[0].SetActive(true);
+        ButtonGameObjects[1].GetComponent<Image>().enabled = false;
+        ButtonGameObjects[0].GetComponent<Image>().enabled = true;
         _activatedButton = 0;
     }
 
     public void MoveDown()
     {
-        ButtonGameObjects[0].SetActive(false);
-        ButtonGameObjects[1].SetActive(true);
+
+        ButtonGameObjects[1].GetComponent<Image>().enabled = true;
+        ButtonGameObjects[0].GetComponent<Image>().enabled = false;
         _activatedButton = 1;
     }
     

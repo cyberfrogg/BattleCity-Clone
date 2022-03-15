@@ -253,11 +253,14 @@ public class LevelGeneration : MonoBehaviour
     {
         foreach (var room in AllRoomPoint)
         {
-            Instantiate(Rooms[Random.Range(0, Rooms.Length)], room.transform.position, Quaternion.identity);
-            await UniTask.Delay(TimeSpan.FromSeconds(1f), ignoreTimeScale: false);
+            var chunk=Instantiate(Rooms[Random.Range(0, Rooms.Length)], room.transform.position, Quaternion.identity);
+            SpawnPoint chunkPoint = chunk.GetComponent<SpawnPoint>();
+            chunkPoint.Initialize();
+
+
+            await UniTask.Delay(TimeSpan.FromSeconds(.1f), ignoreTimeScale: false);
         }
 
-        DestroyBlock();
     }
 
     [ContextMenu("Destroy Block")]
@@ -335,11 +338,6 @@ public class LevelGeneration : MonoBehaviour
     void GenerateWave()
     {
         wave.WaveGeneration = true;
-    }
-
-    void DestroyAllBlock()
-    {
-
     }
 
 

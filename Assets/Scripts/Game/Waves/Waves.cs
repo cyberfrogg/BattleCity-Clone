@@ -19,18 +19,22 @@ namespace GameUtils
         [SerializeField]private int _waveCount = 1;
 
         private List<int> _listOfRandomTank = new List<int>();
+        private int _remainingTankGeneration;
 
         public override void Start()
         {
             base.Start();
             SpawnRandomTanks();
+            _remainingTankGeneration = Game.Instance._tanksToKill;
+            
+           
         }
 
         public override  void Update()
         {
             base.Update();
 
-            if(_spawnedTanks.Count <= 0 && WaveGeneration)
+            if(_spawnedTanks.Count <= 0 && WaveGeneration && _remainingTankGeneration>0)
             {
                 
 
@@ -46,7 +50,7 @@ namespace GameUtils
                         Tank spawnedTank = _spawners[i].Spawn(_listOfRandomTank[GetTankId]) as Tank;
 
                         RemoveTankFromList(GetTankId);
-
+                        _remainingTankGeneration--;
                         _spawnedTanks.Add(spawnedTank);
                     }
 
