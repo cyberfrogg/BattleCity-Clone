@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 9167928836766171610}
   m_Layer: 0
   m_Name: WaterWallBlock
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 5272413257460239758}
   m_Layer: 0
   m_Name: WaterWallBlockParent
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

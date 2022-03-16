@@ -44,9 +44,9 @@ namespace Guns
         /// </summary>
         public virtual void Shoot()
         {
-            Bullet bullet = SpawnBullet();
+            /*Bullet bullet = SpawnBullet();
             bullet.transform.position = Tank.transform.position;
-            bullet.Follow(Tank.transform.up, Tank);
+            bullet.Follow(Tank.transform.up, Tank);*/
         }
 
         /// <summary>
@@ -55,6 +55,7 @@ namespace Guns
         /// <returns>Bullet reference</returns>
         public virtual Bullet SpawnBullet()
         {
+            
             Bullet bullet = Instantiate((Bullet)_bulletPrefab.Clone());
             bullet.transform.position = Tank.transform.position;
 

@@ -9,6 +9,8 @@ public class Shovel : PickUps
     [SerializeField] private float _timerDuration;
     private Collider2D _playerReference;
 
+
+
     protected override void PowerUp(Collider2D player)
     {
         _playerReference = player;

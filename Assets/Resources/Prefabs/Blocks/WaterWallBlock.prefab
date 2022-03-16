@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1458451854819789132}
   m_Layer: 0
   m_Name: WaterWallBlock
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

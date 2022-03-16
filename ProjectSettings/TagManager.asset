@@ -9,6 +9,7 @@ TagManager:
   - barrier
   - Helmet
   - Game
+  - Water
   layers:
   - Default
   - TransparentFX

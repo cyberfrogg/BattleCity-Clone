@@ -20,6 +20,7 @@ namespace Guns
 
         void Start()
         {
+            _firingCount = 1;
             ChangeGunPower(GetGunTier());
         }
 
@@ -39,6 +40,7 @@ namespace Guns
                 _nextFiring = FiringRate;
                 for (int i = 0; i < _firingCount; i++)
                 {
+                    Debug.Log("Shooted From " + gameObject.name);
                     AudioManager.Instance.PlaySFX(TankShootingSfx);
                     Bullet bullet = SpawnBullet();
                     bullet.transform.position = Tank.transform.position + (Tank.transform.up * _shootOffsetDistance);

@@ -138,6 +138,7 @@ MonoBehaviour:
   - {fileID: 6119102199193320943, guid: 2e92c12971ea0124f8d25f33358c45dd, type: 3}
   - {fileID: 6062259338029910093, guid: 3e301de9be28a5e4e9286d2b6275c01c, type: 3}
   - {fileID: 1080060827509945387, guid: 10677c819830cc14e9b828226d9342db, type: 3}
+  DummyPowerUp: {fileID: 6104127678957242693, guid: 70a2dce2993098d46baf76213aa2bac4, type: 3}
   TankDestroyEffect: {fileID: 701701888199236892, guid: c7819bac43e860b4f9f5af67a2abeb43, type: 3}
 --- !u!114 &6438683036819250900
 MonoBehaviour:

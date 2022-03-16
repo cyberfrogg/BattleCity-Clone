@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: -2068279455048900659, guid: da6e03f8b77b4fa4db77b77d8bd31462, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -152,7 +152,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: -6011527004072191685, guid: da6e03f8b77b4fa4db77b77d8bd31462, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -234,7 +234,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 820357171280843453, guid: da6e03f8b77b4fa4db77b77d8bd31462, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -302,6 +302,7 @@ MonoBehaviour:
   _bulletSpeed: 4
   CanDestroySteel: 0
   BulletEffect: {fileID: 7677568966597443265, guid: 1224fb8519f763b449e5bbde9cb50a82, type: 3}
+  Type: 0
 --- !u!61 &3027030715251331787
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -419,7 +420,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 1686090473150026498, guid: da6e03f8b77b4fa4db77b77d8bd31462, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

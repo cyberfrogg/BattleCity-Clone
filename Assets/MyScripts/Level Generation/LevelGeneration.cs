@@ -54,6 +54,8 @@ public class LevelGeneration : MonoBehaviour
     public AudioClip LevelStartAudio;
     public AudioClip PlayerIdleAudio;
 
+
+
     void Awake()
     {
 

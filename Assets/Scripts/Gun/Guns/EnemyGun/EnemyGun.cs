@@ -15,6 +15,12 @@ namespace Guns
         private float _nextFiring;
 
 
+
+        void Start()
+        {
+            _nextFiring = FiringRate;
+        }
+
         public override void Update()
         {
             base.Update();
@@ -23,13 +29,14 @@ namespace Guns
         }
         public override void Shoot()
         {
+
             if (!GameObject.FindGameObjectWithTag("Game").GetComponent<PlayerPowerUps>().Timer)
             {
-                /*if (Game.Instance.isLevelDone)
-                    return;*/
-
                 if (_nextFiring <= 0)
                 {
+
+                    Debug.Log("Shooted From " + gameObject.name);
+
                     _nextFiring = FiringRate;
                     Bullet bullet = SpawnBullet();
                     bullet.transform.position = Tank.transform.position + (Tank.transform.up * _shootOffsetDistance);

@@ -66,20 +66,26 @@ namespace Entities
 
             if (Owner != null)
             {
-                if(thing != Owner)
+
+                if (!thing.CompareTag("Water"))
                 {
-                    try
+                    if (thing != Owner)
                     {
-                        (thing as Tank).Damage(DamageCount, this);
-                    }
-                    catch
-                    {
+                        try
+                        {
+                            (thing as Tank).Damage(DamageCount, this);
+                        }
+                        catch
+                        {
 
-                    }
+                        }
 
-                    Instantiate(BulletEffect, transform.position, Quaternion.identity);
-                    Destroy(gameObject);
+                        Instantiate(BulletEffect, transform.position, Quaternion.identity);
+                        Destroy(gameObject);
+                    }
                 }
+
+                
             }
 
             else

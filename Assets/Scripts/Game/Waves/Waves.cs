@@ -14,7 +14,7 @@ namespace GameUtils
         public bool WaveGeneration;
         [SerializeField]private bool _generateWave;
         [SerializeField]private bool _generateAnimationStop;
-
+        [SerializeField]private int _tanksRemaining;
         [SerializeField]private List<Tank> _spawnedTanks = new List<Tank>();
         [SerializeField]private int _waveCount = 1;
 
@@ -27,47 +27,36 @@ namespace GameUtils
             base.Start();
             SpawnRandomTanks();
             _totalTankGeneration = 0;
+            _tanksRemaining = 0;
 
-            
-           
+
+
         }
 
         public override  void Update()
         {
             base.Update();
 
-            if(_spawnedTanks.Count <=0 && WaveGeneration && _totalTankGeneration < Game.Instance._tanksToKill)
+            /*if(WaveGeneration && _totalTankGeneration < Game.Instance._tanksToKill && _tanksRemaining < _tanksPerWave)
             {
+                GenerateTanks();
+            }
 
-                if (!_generateAnimationStop)
-                    GenerateEnemyAnimation();
-
-                if (_generateWave)
+            
+            foreach (Tank item in _spawnedTanks)
+            {
+                if (item.IsDead)
                 {
-                    for (int i = 0; i < _tanksPerWave; i++)
-                    {
-                        bool flashyTank = false;
-                        int GetTankId = GetRandomTank();
-                        _totalTankGeneration++;
+                    _spawnedTanks.Remove(item);
+                    _tanksRemaining--;
 
-                        if (_totalTankGeneration == 4 || _totalTankGeneration == 11 || _totalTankGeneration == 18)
-                        {
-                            flashyTank = true;
-                        }
-                        Tank spawnedTank = _spawners[i].Spawn(_listOfRandomTank[GetTankId] , flashyTank) as Tank;
-
-
-                        RemoveTankFromList(GetTankId);
-                        
-                        _spawnedTanks.Add(spawnedTank);
-                    }
-
-                    _waveCount++;
-                    _generateWave = false;
-                    _generateAnimationStop = false;
+                    return;
                 }
+            }*/
 
-                
+            if (_listOfRandomTank.Count > 0 && _tanksRemaining < _tanksPerWave)
+            {
+                GenerateTanks();
             }
 
             foreach (Tank item in _spawnedTanks)
@@ -75,21 +64,24 @@ namespace GameUtils
                 if (item.IsDead)
                 {
                     _spawnedTanks.Remove(item);
+                    _tanksRemaining--;
+                    GenerateTanks();
                     return;
                 }
             }
         }
 
 
-        [ContextMenu("Generate Enemy")]
-        async void GenerateEnemyAnimation()
+        [ContextMenu("Generate EnemyAnimation")]
+        async UniTask GenerateEnemyAnimation(int loopCount)
         {
             _generateAnimationStop = true;
+            _spawners[loopCount].gameObject.GetComponent<Spawner>().AnimationObject.SetActive(true);
 
-            foreach (var enemy in _spawners)
+            /*for (int i = 0; i < loopCount; i++)
             {
-                enemy.gameObject.GetComponent<Spawner>().AnimationObject.SetActive(true);
-            }
+                _spawners[i].gameObject.GetComponent<Spawner>().AnimationObject.SetActive(true);
+            }*/
 
             await UniTask.Delay(TimeSpan.FromSeconds(1.5f), ignoreTimeScale: false);
 
@@ -101,6 +93,8 @@ namespace GameUtils
             _generateWave = true;
 
         }
+
+        
 
         [ContextMenu("Destroy Waves")]
         public void DestroyWave()
@@ -173,6 +167,69 @@ namespace GameUtils
             _listOfRandomTank.RemoveAt(id);
 
             Debug.Log("Spawned tank count " + _listOfRandomTank.Count);
+        }
+
+        private async void GenerateTanks()
+        {
+
+            /*int loopCount = _tanksPerWave - _spawnedTanks.Count;
+            _tanksRemaining += loopCount;
+            
+            if(_tanksRemaining > _tanksPerWave)
+                return;
+
+            if (!_generateAnimationStop)
+                await GenerateEnemyAnimation(loopCount);
+
+
+            if (_generateWave)
+            {
+                for (int i = 0; i < loopCount; i++)
+                {
+                    bool flashyTank = false;
+                    int getTankId = GetRandomTank();
+                    _totalTankGeneration++;
+
+                    if (_totalTankGeneration == 4 || _totalTankGeneration == 11 || _totalTankGeneration == 18)
+                    {
+                        flashyTank = true;
+                    }
+                    Tank spawnedTank = _spawners[i].Spawn(_listOfRandomTank[getTankId], flashyTank) as Tank;
+
+
+                    RemoveTankFromList(getTankId);
+
+                    _spawnedTanks.Add(spawnedTank);
+                }
+                _waveCount++;
+                _generateWave = false;
+                _generateAnimationStop = false;
+            }*/
+
+            int random = Random.Range(0, 3);
+
+            if (!_generateAnimationStop)
+                await GenerateEnemyAnimation(random);
+
+            bool flashyTank = false;
+            int getTankId = GetRandomTank();
+            _totalTankGeneration++;
+
+            if (_totalTankGeneration == 4 || _totalTankGeneration == 11 || _totalTankGeneration == 18)
+            {
+                flashyTank = true;
+            }
+
+            Tank spawnedTank = _spawners[random].Spawn(_listOfRandomTank[getTankId], flashyTank) as Tank;
+
+
+            RemoveTankFromList(getTankId);
+
+            _spawnedTanks.Add(spawnedTank);
+
+            _generateWave = false;
+            _generateAnimationStop = false;
+
         }
     }
 }

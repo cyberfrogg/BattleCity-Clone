@@ -70,9 +70,13 @@ namespace Blocks
             {
                 if (!_isDied)
                 {
+                    Game.Instance.isLevelDone = true;
+                    AudioManager.Instance.StopAll();
+
                     AudioManager.Instance.PlaySFX(DestroyedSfx);
                     _levelStatisticsCollector.SetHighScore();
                     _isDied = true;
+                    
                     Game.Instance.Triggers.OnCityBlockDied.Invoke();
                     _spriteRenderer.sprite = _deadSprite;
                 }

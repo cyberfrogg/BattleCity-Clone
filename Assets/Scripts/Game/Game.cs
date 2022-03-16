@@ -30,7 +30,7 @@ namespace GameUtils
 
         public override void Start()
         {
-            
+            isLevelDone = false;
         }
 
         private void validateDoneScore(int score)
@@ -41,8 +41,8 @@ namespace GameUtils
             {
                 StatisticsCollector.UpdateTotalScore();
                 StatisticsCollector.SetStageLevel();
-        
 
+                Game.Instance.isLevelDone = true;
                 Triggers.OnLevelDone.Invoke();
             }
         }

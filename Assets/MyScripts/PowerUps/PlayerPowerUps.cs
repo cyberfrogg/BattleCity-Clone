@@ -13,9 +13,6 @@ public class PlayerPowerUps : MonoBehaviour
     public bool LevelCleared;
 
     private GameObject _helmet;
-    /*private GameObject _grenade;
-    private GameObject _shovel;
-    private GameObject _star;*/
 
 
     void Start()

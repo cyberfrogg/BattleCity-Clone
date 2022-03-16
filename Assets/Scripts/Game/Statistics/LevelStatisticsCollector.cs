@@ -52,6 +52,9 @@ namespace Statistics
 
             if(Statistics.LevelRemainingPlayerTanksCount <= 0)
             {
+                Game.Instance.isLevelDone = true;
+                AudioManager.Instance.StopAll();
+
                 SetHighScore();
                 Game.Instance.Triggers.OnPlayerTanksEnd.Invoke();
             }
@@ -98,7 +101,7 @@ namespace Statistics
                 return PlayerPrefs.GetInt("PlayerLifeCount");
             }
 
-            return 1;
+            return 3;
         }
 
         private void UpdateScore(int score)

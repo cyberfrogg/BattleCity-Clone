@@ -10,13 +10,23 @@ namespace Entities
         [SerializeField] private float _idleDelay;
         private bool _runTimer;
         private float _runTimerTime;
+        private bool _shoot;
 
         public override void RunState(UnityAction callbackevent)
         {
             base.RunState(callbackevent);
 
             Tank selfTank = Self as Tank;
-            selfTank.Gun.Shoot();
+
+            if (!_shoot)
+            {
+                _shoot = true;
+            }
+            else
+            {
+                selfTank.Gun.Shoot();
+            }
+            
 
             _runTimer = true;
         }

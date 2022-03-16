@@ -58,13 +58,19 @@ namespace Entities
         /// <param name="moveVector">Normolized movement vector</param>
         public virtual void Move(Vector2 moveVector)
         {
-
-            _rigidbody.velocity = (moveVector * MoveSpeed);
+            
 
             if (moveVector.x != 0 || moveVector.y != 0)
             {
+                
                 LookAt(moveVector);
             }
+
+            //_rigidbody.AddForce(moveVector * MoveSpeed);
+            //_rigidbody.MovePosition(_rigidbody.position + moveVector * MoveSpeed * Time.deltaTime);
+            _rigidbody.velocity = (moveVector * MoveSpeed);
+
+            
 
         }
 

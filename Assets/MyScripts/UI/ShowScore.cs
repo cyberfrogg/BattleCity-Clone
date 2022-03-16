@@ -47,6 +47,7 @@ public class ShowScore : MonoBehaviour
         Debug.Log("Sprite Chnaged again");
         await UniTask.Delay(TimeSpan.FromSeconds(2f));
         sr.sprite = null;
+        Destroy(gameObject);
 
     }
 }

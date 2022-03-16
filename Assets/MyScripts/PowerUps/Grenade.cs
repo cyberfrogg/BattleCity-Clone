@@ -8,6 +8,7 @@ using UnityEngine;
 public class Grenade : PickUps
 {
     
+
     protected override void PowerUp(Collider2D player)
     {
         GameObject.FindGameObjectWithTag("Game").GetComponent<Waves>().DestroyWave();

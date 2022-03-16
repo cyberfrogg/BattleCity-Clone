@@ -16,6 +16,7 @@ namespace Entities
         private int _spriteIteration;
         public bool DropPowerUp;
         public GameObject[] PowerUps;
+        public GameObject DummyPowerUp;
 
         public GameObject TankDestroyEffect;
 
@@ -82,7 +83,8 @@ namespace Entities
 
             if (DropPowerUp)
             {
-                Instantiate(PowerUps[Random.Range(0, PowerUps.Length)], new Vector3(transform.position.x +.5f, transform.position.y + .5f, transform.position.z + .5f), Quaternion.identity);
+                DropPickUp();
+                //Instantiate(PowerUps[Random.Range(0, PowerUps.Length)], new Vector3(transform.position.x +.5f, transform.position.y + .5f, transform.position.z + .5f), Quaternion.identity);
             }
 
             DestroyedTank.instance.TankTypeDestroyed[_enemyType] += 1;
@@ -92,6 +94,61 @@ namespace Entities
             Debug.Log( _enemyType + " killed " + DestroyedTank.instance.TankTypeDestroyed[_enemyType]);
 
             base.Die(deathOwner);
+        }
+
+        private void DropPickUp()
+        {
+            float maxXBoundary = 9f;
+            float minXBoundary = -maxXBoundary;
+
+            float maxYBoundary = 4f;
+            float minYBoundary = -maxYBoundary;
+
+
+            bool invalidPosition = true;
+
+            
+
+            Vector3 position = new Vector3(Random.Range(minXBoundary, maxXBoundary),
+                Random.Range(minYBoundary, maxYBoundary), 0f);
+
+            GameObject dummy = Instantiate(DummyPowerUp, position, Quaternion.identity);
+
+            while (invalidPosition)
+            {
+
+                invalidPosition = false;
+
+                Collider2D[] collidedObjects;
+                dummy.transform.position = position;
+                collidedObjects = Physics2D.OverlapCircleAll(position, .5f);
+
+
+                if (collidedObjects != null)
+                {
+                    foreach (var block in collidedObjects)
+                    {
+                        if (block.gameObject.CompareTag("barrier") || block.gameObject.CompareTag("Player") ||
+                            block.gameObject.CompareTag("Water"))
+                        {
+                            invalidPosition = true;
+
+
+                            position = new Vector3(Random.Range(minXBoundary, maxXBoundary),
+                                Random.Range(minYBoundary, maxYBoundary), 0f);
+
+
+                            break;
+                        }
+                            
+                    }
+                }
+
+            }
+
+            Instantiate(PowerUps[Random.Range(0, PowerUps.Length)], position, Quaternion.identity);
+
+
         }
 
 

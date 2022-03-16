@@ -40,7 +40,7 @@ public class BulletEffect : MonoBehaviour
         //await UniTask.Delay(TimeSpan.FromSeconds(1f));
 
         transform.GetChild(childCount).GetComponent<SpriteRenderer>().enabled = false;
-
+        Destroy(gameObject);
 
     }
 }

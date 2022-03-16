@@ -1502,6 +1502,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: barrier
       objectReference: {fileID: 0}
+    - target: {fileID: 1917556007015758556, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1917556007327849248, guid: dcc692e0abe5a6b47bf4742420e5d21f, type: 3}
       propertyPath: m_TagString
       value: barrier

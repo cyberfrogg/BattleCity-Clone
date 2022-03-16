@@ -220,7 +220,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7086040485814057190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: -0.031, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7086040486279445746}
@@ -246,7 +246,7 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!61 &7086040485814057194
@@ -262,7 +262,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.060800806}
+  m_Offset: {x: -0.000016480684, y: -0.062287197}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -273,7 +273,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.83303475, y: 0.70665145}
+  m_Size: {x: 0.81445724, y: 0.6898782}
   m_EdgeRadius: 0
 --- !u!114 &7086040485814057189
 MonoBehaviour:
@@ -290,7 +290,7 @@ MonoBehaviour:
   AI:
     Self: {fileID: 0}
   MoveSpeed: 2
-  _maxHealth: 4
+  _maxHealth: 1
   _rigidbody: {fileID: 7086040485814057195}
   _spriteContainer: {fileID: 7086040486279445746}
   _gun: {fileID: 7086040485814057193}
