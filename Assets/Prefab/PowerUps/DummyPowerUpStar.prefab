@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8254265963871637516
+--- !u!1 &6119102199193320943
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8254265963871637520}
-  - component: {fileID: 8254265963871637521}
-  - component: {fileID: 8254265963871637518}
-  - component: {fileID: 8254265963871637519}
+  - component: {fileID: 6119102199193320939}
+  - component: {fileID: 6119102199193320940}
+  - component: {fileID: 6119102199193320941}
+  - component: {fileID: 6119102199193320942}
   m_Layer: 0
-  m_Name: DummyPowerUpHelmet
+  m_Name: DummyPowerUpStar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8254265963871637520
+--- !u!4 &6119102199193320939
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254265963871637516}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.1430542, y: -0.45025063, z: 0.22952594}
+  m_GameObject: {fileID: 6119102199193320943}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8254265963871637521
+--- !u!212 &6119102199193320940
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254265963871637516}
+  m_GameObject: {fileID: 6119102199193320943}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: ac543b24c4be75b458df0a1c25f8f244, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8b3326cdb1e9640459cf676b6048126b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,13 +84,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &8254265963871637518
+--- !u!61 &6119102199193320941
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254265963871637516}
+  m_GameObject: {fileID: 6119102199193320943}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -110,20 +110,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &8254265963871637519
+--- !u!114 &6119102199193320942
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254265963871637516}
+  m_GameObject: {fileID: 6119102199193320943}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeff192213c547d4d9041a17c3029821, type: 3}
+  m_Script: {fileID: 11500000, guid: 889602949063475439bb7925f26568d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PowerUpPickUpAudio: {fileID: 8300000, guid: 748f94b25586fd14d9631ace14e8f8a2, type: 3}
-  _helmetDuration: 5
-  Sprite:
-  - {fileID: 4442304929122174753, guid: da6e03f8b77b4fa4db77b77d8bd31462, type: 3}
-  - {fileID: -8391750856750712026, guid: da6e03f8b77b4fa4db77b77d8bd31462, type: 3}

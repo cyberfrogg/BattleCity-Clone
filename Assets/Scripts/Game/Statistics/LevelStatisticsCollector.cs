@@ -20,8 +20,8 @@ namespace Statistics
         public override void Awake()
         {
             base.Awake();
-            SetStageLevel();
-            _currentLevel = PlayerPrefs.GetInt("StageCount");
+            
+            
             Statistics.TotalScore =  GetTotalScore();
             Statistics.LevelRemainingPlayerTanksCount = GetPlayerLife();
             _previousScore = Statistics.TotalScore;
@@ -29,6 +29,12 @@ namespace Statistics
             _display.UpdateDisplay(Statistics);
 
             
+        }
+
+
+        public override void Start()
+        {
+            _currentLevel = GetStageLevel();
         }
 
         public void OnTankKilled(int score)
@@ -138,12 +144,22 @@ namespace Statistics
         {
             if (PlayerPrefs.HasKey("StageCount"))
             {
-                PlayerPrefs.SetInt("StageCount", (PlayerPrefs.GetInt("StageCount")+ 1));
+                PlayerPrefs.SetInt("StageCount", (PlayerPrefs.GetInt("StageCount")+1));
             }
             else
             {
                 PlayerPrefs.SetInt("StageCount", 1);
             }
+        }
+
+        public int GetStageLevel()
+        {
+            if (!PlayerPrefs.HasKey("StageCount"))
+            {
+                PlayerPrefs.SetInt("StageCount", 1);
+            }
+
+            return PlayerPrefs.GetInt("StageCount");
         }
 
     }

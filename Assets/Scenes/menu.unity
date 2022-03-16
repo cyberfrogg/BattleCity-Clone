@@ -403,6 +403,7 @@ GameObject:
   - component: {fileID: 197455634}
   - component: {fileID: 197455633}
   - component: {fileID: 197455635}
+  - component: {fileID: 197455636}
   m_Layer: 0
   m_Name: SceneEvents
   m_TagString: Untagged
@@ -462,6 +463,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _leaderBoardScene: leaderboard
+--- !u!114 &197455636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197455631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ed69239b91cd2c49b7c86379106e180, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &246519453
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,6 +849,18 @@ MonoBehaviour:
       - m_Target: {fileID: 197455634}
         m_TargetAssemblyTypeName: SceneEvents.MenuPlayGameSceneEvent, Assembly-CSharp
         m_MethodName: TriggerEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 197455636}
+        m_TargetAssemblyTypeName: ClearSaveFile, Assembly-CSharp
+        m_MethodName: ClearSave
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1230,6 +1255,18 @@ MonoBehaviour:
       - m_Target: {fileID: 197455634}
         m_TargetAssemblyTypeName: SceneEvents.MenuPlayGameSceneEvent, Assembly-CSharp
         m_MethodName: TriggerEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 197455636}
+        m_TargetAssemblyTypeName: ClearSaveFile, Assembly-CSharp
+        m_MethodName: ClearSave
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -19,13 +19,15 @@ namespace GameUtils
         [SerializeField]private int _waveCount = 1;
 
         private List<int> _listOfRandomTank = new List<int>();
-        private int _remainingTankGeneration;
+        private int _totalTankGeneration;
+        private List<int> _tankPowerUpTime = new List<int>();
 
         public override void Start()
         {
             base.Start();
             SpawnRandomTanks();
-            _remainingTankGeneration = Game.Instance._tanksToKill;
+            _totalTankGeneration = 0;
+
             
            
         }
@@ -34,9 +36,8 @@ namespace GameUtils
         {
             base.Update();
 
-            if(_spawnedTanks.Count <= 0 && WaveGeneration && _remainingTankGeneration>0)
+            if(_spawnedTanks.Count <=0 && WaveGeneration && _totalTankGeneration < Game.Instance._tanksToKill)
             {
-                
 
                 if (!_generateAnimationStop)
                     GenerateEnemyAnimation();
@@ -45,12 +46,19 @@ namespace GameUtils
                 {
                     for (int i = 0; i < _tanksPerWave; i++)
                     {
+                        bool flashyTank = false;
                         int GetTankId = GetRandomTank();
+                        _totalTankGeneration++;
 
-                        Tank spawnedTank = _spawners[i].Spawn(_listOfRandomTank[GetTankId]) as Tank;
+                        if (_totalTankGeneration == 4 || _totalTankGeneration == 11 || _totalTankGeneration == 18)
+                        {
+                            flashyTank = true;
+                        }
+                        Tank spawnedTank = _spawners[i].Spawn(_listOfRandomTank[GetTankId] , flashyTank) as Tank;
+
 
                         RemoveTankFromList(GetTankId);
-                        _remainingTankGeneration--;
+                        
                         _spawnedTanks.Add(spawnedTank);
                     }
 

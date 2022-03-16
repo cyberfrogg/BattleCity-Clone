@@ -65,8 +65,9 @@ public class LevelGeneration : MonoBehaviour
 
         GenerateCity();
         AudioManager.Instance.PlayBGM(LevelStartAudio);
-        await UniTask.Delay(TimeSpan.FromSeconds(LevelStartAudio.length + .5f), ignoreTimeScale: false);
-        AudioManager.Instance.PlayBackGroundSFX(PlayerIdleAudio);
+        await UniTask.Delay(TimeSpan.FromSeconds(LevelStartAudio.length - 2f), ignoreTimeScale: false);
+        GeneratePlayerPosition();
+        //AudioManager.Instance.PlayBackGroundSFX(PlayerIdleAudio);
         //_direction = Random.Range(1, 5);
     }
 
@@ -261,6 +262,8 @@ public class LevelGeneration : MonoBehaviour
             await UniTask.Delay(TimeSpan.FromSeconds(.1f), ignoreTimeScale: false);
         }
 
+        DestroyBlock();
+
     }
 
     [ContextMenu("Destroy Block")]
@@ -298,7 +301,7 @@ public class LevelGeneration : MonoBehaviour
             }
         }
 
-        GeneratePlayerPosition();
+        
     }
 
     [ContextMenu("Generate Player")]

@@ -56,6 +56,7 @@ namespace Entities
                 LookAt(_followDirection);
                 transform.Translate((transform.right * -_followDirection.x + transform.up * _followDirection.y) * _bulletSpeed * Time.deltaTime);
             }
+
         }
 
         public override void OnThingCollidedEnter(Thing thing)
@@ -79,6 +80,12 @@ namespace Entities
                     Instantiate(BulletEffect, transform.position, Quaternion.identity);
                     Destroy(gameObject);
                 }
+            }
+
+            else
+            {
+                Instantiate(BulletEffect, transform.position, Quaternion.identity);
+                Destroy(gameObject);
             }
         }
 

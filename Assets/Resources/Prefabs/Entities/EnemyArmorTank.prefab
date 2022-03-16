@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6026463467879904985}
   - component: {fileID: 6026463467879904982}
   - component: {fileID: 6026463467879904986}
+  - component: {fileID: 9181090748659391982}
   m_Layer: 0
   m_Name: EnemyArmorTank
   m_TagString: Untagged
@@ -131,6 +132,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0b144b6a2894bc148afbfc7b40025bb1, type: 3}
   - {fileID: 21300000, guid: 7b3862ce20c89514393b375c74c44675, type: 3}
   DamagedTankAudio: {fileID: 8300000, guid: 18cc15536a3f66a4b8b4dbaff6fc22d2, type: 3}
+  DropPowerUp: 0
+  PowerUps:
+  - {fileID: 7050361394669777366, guid: 4d30c7739a50fed4db02211a8d5979f9, type: 3}
+  - {fileID: 8254265963871637516, guid: 093f5621728ca5a49b227622c5894c97, type: 3}
+  - {fileID: 8684600285717298182, guid: c0f6b1d865221f44c90678e80194fd6d, type: 3}
+  - {fileID: 6119102199193320943, guid: 2e92c12971ea0124f8d25f33358c45dd, type: 3}
+  - {fileID: 6062259338029910093, guid: 3e301de9be28a5e4e9286d2b6275c01c, type: 3}
+  - {fileID: 1080060827509945387, guid: 10677c819830cc14e9b828226d9342db, type: 3}
   TankDestroyEffect: {fileID: 701701888199236892, guid: c7819bac43e860b4f9f5af67a2abeb43, type: 3}
 --- !u!114 &6026463467879904986
 MonoBehaviour:
@@ -149,6 +158,25 @@ MonoBehaviour:
   _shootOffsetDistance: 0.6
   _destroySteel: 0
   FiringRate: 0.4
+--- !u!95 &9181090748659391982
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6026463467879904983}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 36e8199ef697895419dae2e553310d30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6026463468413275332
 GameObject:
   m_ObjectHideFlags: 0

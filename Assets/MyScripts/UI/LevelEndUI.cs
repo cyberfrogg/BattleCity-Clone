@@ -36,7 +36,7 @@ public class LevelEndUI : MonoBehaviour
     private async void LevelEndCalculation()
     {
         _highScore.text = PlayerPrefs.GetInt("HighScore").ToString("00000");
-        _stageNo.text = PlayerPrefs.GetInt("StageCount").ToString("00");
+        _stageNo.text = (PlayerPrefs.GetInt("StageCount") - 1).ToString("00");
         _playerScore.text = PlayerPrefs.GetInt("TotalScore").ToString();
 
 

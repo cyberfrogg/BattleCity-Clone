@@ -28,6 +28,11 @@ namespace GameUtils
             Triggers.OnTankKilled.AddListener(validateDoneScore);
         }
 
+        public override void Start()
+        {
+            
+        }
+
         private void validateDoneScore(int score)
         {
             StatisticsCollector.OnTankKilled(score);
@@ -44,14 +49,15 @@ namespace GameUtils
 
         public void IncreaseTankPerStage()
         {
-            if (PlayerPrefs.HasKey("StageCount"))
+
+            if (!PlayerPrefs.HasKey("StageCount"))
             {
-                _tanksToKill = Mathf.Clamp(PlayerPrefs.GetInt("StageCount") * 3, 3, 30);
+                PlayerPrefs.SetInt("StageCount", 1);
             }
-            else
-            {
-                _tanksToKill = 3;
-            }
+
+           
+            _tanksToKill = Mathf.Clamp((PlayerPrefs.GetInt("StageCount")) * 3, 3, 30);
+            
         }
 
     }

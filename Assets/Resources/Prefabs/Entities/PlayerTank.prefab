@@ -290,7 +290,7 @@ MonoBehaviour:
   AI:
     Self: {fileID: 0}
   MoveSpeed: 2
-  _maxHealth: 1
+  _maxHealth: 4
   _rigidbody: {fileID: 7086040485814057195}
   _spriteContainer: {fileID: 7086040486279445746}
   _gun: {fileID: 7086040485814057193}

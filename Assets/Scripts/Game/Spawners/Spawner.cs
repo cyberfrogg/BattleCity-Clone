@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using Cysharp.Threading.Tasks;
+using Entities;
 
 namespace GameUtils
 {
@@ -22,21 +23,17 @@ namespace GameUtils
         /// <summary>
         /// Spawns thing
         /// </summary>
-        public virtual Thing Spawn(int tankId = 0)
+        public virtual Thing Spawn(int tankId = 0 , bool flashy = false)
         {
-            //_spawnerTank = new SpawnerTank();
-            //int level = GetTier();
-            //Debug.Log("LevelCount ==> "+level);
+
             tankId = Mathf.Clamp(tankId, 0, _spawnObject.Length-1);
-
-            //level = Mathf.Clamp(level , 0 ,_spawnObject.Length-1);
-
 
             Thing instance = Instantiate((Thing)_spawnObject[tankId].Clone());
 
 
             instance.transform.position = _spawnPoint != null ? _spawnPoint.position : transform.position;
-
+            if(flashy)
+                FlashyAnimation(instance);
 
             return instance;
         }
@@ -55,6 +52,12 @@ namespace GameUtils
             AnimationObject.SetActive(false);
 
             Tank = Spawn();
+        }
+
+        private void FlashyAnimation(Thing Tank)
+        {
+            Tank.GetComponent<Animator>().enabled = true;
+            Tank.GetComponent<EnemyTank>().DropPowerUp = true;
         }
 
 
