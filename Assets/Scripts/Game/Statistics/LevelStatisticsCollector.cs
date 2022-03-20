@@ -15,6 +15,8 @@ namespace Statistics
         [SerializeField] private StatisticsDisplay _display;
         [SerializeField]private int _previousScore = 0;
         [SerializeField] private int _currentLevel;
+        [SerializeField] private int _playerStartingLife;
+        [SerializeField] private AudioClip _gameOver;
 
 
         public override void Awake()
@@ -54,6 +56,8 @@ namespace Statistics
             {
                 Game.Instance.isLevelDone = true;
                 AudioManager.Instance.StopAll();
+
+                AudioManager.Instance.PlaySFX(_gameOver);
 
                 SetHighScore();
                 Game.Instance.Triggers.OnPlayerTanksEnd.Invoke();
@@ -101,7 +105,7 @@ namespace Statistics
                 return PlayerPrefs.GetInt("PlayerLifeCount");
             }
 
-            return 3;
+            return _playerStartingLife;
         }
 
         private void UpdateScore(int score)

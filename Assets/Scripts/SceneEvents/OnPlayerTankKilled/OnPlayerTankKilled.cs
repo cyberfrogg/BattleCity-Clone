@@ -13,7 +13,12 @@ namespace SceneEvents
         {
             base.TriggerEvent();
 
-            _spawner.Spawn(_playerSpawnTime);
+
+            if (Game.Instance.StatisticsCollector.Statistics.LevelRemainingPlayerTanksCount > 0)
+            {
+                _spawner.Spawn(_playerSpawnTime);
+            }
+            
         }
 
 

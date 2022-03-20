@@ -42,7 +42,7 @@ namespace GameUtils
                 StatisticsCollector.UpdateTotalScore();
                 StatisticsCollector.SetStageLevel();
 
-                Game.Instance.isLevelDone = true;
+                
                 Triggers.OnLevelDone.Invoke();
             }
         }

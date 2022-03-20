@@ -18,10 +18,13 @@ namespace SceneEvents
         [SerializeField] private GameObject _levelOverScreen;
 
 
-        public override void TriggerEvent()
+        public override async void TriggerEvent()
         {
             base.TriggerEvent();
 
+            await UniTask.Delay(TimeSpan.FromSeconds(2));
+
+            Game.Instance.isLevelDone = true;
             _levelOverScreen.gameObject.SetActive(true);
             AudioManager.Instance.StopAll();
 

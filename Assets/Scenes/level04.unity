@@ -5511,7 +5511,7 @@ GameObject:
   - component: {fileID: 288619523}
   - component: {fileID: 288619522}
   m_Layer: 0
-  m_Name: EnemySpawner3
+  m_Name: EnemySpawner2
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -5534,7 +5534,7 @@ MonoBehaviour:
   - {fileID: 4324656470504510003, guid: 255793e51d0d67542acd76b78b47e15d, type: 3}
   - {fileID: 6438683036819250904, guid: 7ec8071af1f30314cb6dc6d7a0400ecd, type: 3}
   - {fileID: 6026463467879904982, guid: 5ff5d7bfdf443b04c8c2873d34b518cb, type: 3}
-  _spawnPoint: {fileID: 1574541511}
+  _spawnPoint: {fileID: 151648800}
   AnimationObject: {fileID: 2072160840}
   Tank: {fileID: 0}
 --- !u!4 &288619523
@@ -5550,7 +5550,7 @@ Transform:
   m_Children:
   - {fileID: 2072160843}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &288989152
 PrefabInstance:
@@ -10459,7 +10459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1472497847687021442, guid: 07a7aa56516918942b4205ed275ddc01, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1472497847687021442, guid: 07a7aa56516918942b4205ed275ddc01, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13249,7 +13249,7 @@ GameObject:
   - component: {fileID: 669259719}
   - component: {fileID: 669259718}
   m_Layer: 0
-  m_Name: EnemySpawner2
+  m_Name: EnemySpawner3
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -13272,7 +13272,7 @@ MonoBehaviour:
   - {fileID: 4324656470504510003, guid: 255793e51d0d67542acd76b78b47e15d, type: 3}
   - {fileID: 6438683036819250904, guid: 7ec8071af1f30314cb6dc6d7a0400ecd, type: 3}
   - {fileID: 6026463467879904982, guid: 5ff5d7bfdf443b04c8c2873d34b518cb, type: 3}
-  _spawnPoint: {fileID: 151648800}
+  _spawnPoint: {fileID: 1574541511}
   AnimationObject: {fileID: 120771423}
   Tank: {fileID: 0}
 --- !u!4 &669259719
@@ -13288,7 +13288,7 @@ Transform:
   m_Children:
   - {fileID: 120771426}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &670968824
 PrefabInstance:
@@ -25653,6 +25653,8 @@ MonoBehaviour:
   _display: {fileID: 1325385202}
   _previousScore: 0
   _currentLevel: 0
+  _playerStartingLife: 1
+  _gameOver: {fileID: 8300000, guid: d675d752130d2894795a03bba7ce8c96, type: 3}
 --- !u!114 &1325385202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25688,12 +25690,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawners:
   - {fileID: 1620981410}
-  - {fileID: 669259718}
   - {fileID: 288619522}
+  - {fileID: 669259718}
   _tanksPerWave: 3
   WaveGeneration: 0
   _generateWave: 0
   _generateAnimationStop: 0
+  _tanksGeneratedPerWave: 0
   _spawnedTanks: []
   _waveCount: 0
 --- !u!114 &1325385204
@@ -25742,9 +25745,9 @@ MonoBehaviour:
     OnPlayerKilled:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2011800981}
-          m_TargetAssemblyTypeName: SceneEvents.OnPlayerTankKilled, Assembly-CSharp
-          m_MethodName: TriggerEvent
+        - m_Target: {fileID: 1325385201}
+          m_TargetAssemblyTypeName: Statistics.LevelStatisticsCollector, Assembly-CSharp
+          m_MethodName: OnPlayerKilled
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -25754,9 +25757,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1325385201}
-          m_TargetAssemblyTypeName: Statistics.LevelStatisticsCollector, Assembly-CSharp
-          m_MethodName: OnPlayerKilled
+        - m_Target: {fileID: 2011800981}
+          m_TargetAssemblyTypeName: SceneEvents.OnPlayerTankKilled, Assembly-CSharp
+          m_MethodName: TriggerEvent
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -36018,7 +36021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawner: {fileID: 335215003}
-  _playerSpawnTime: 2000
+  _playerSpawnTime: 1500
 --- !u!114 &2011800982
 MonoBehaviour:
   m_ObjectHideFlags: 0

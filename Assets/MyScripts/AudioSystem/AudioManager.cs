@@ -48,6 +48,14 @@ public class AudioManager : MonoBehaviour
         SFX.Play();
     }
 
+    public void PlayDelayedSFX(AudioClip sfxAudioClip , float delay)
+    {
+        //StopSFX();
+        SFX.clip = sfxAudioClip;
+        SFX.loop = false;
+        SFX.PlayDelayed(delay);
+    }
+
 
     public void PlayBackGroundSFX(AudioClip sfxAudioClip)
     {
@@ -64,8 +72,13 @@ public class AudioManager : MonoBehaviour
 
     public void StopAll()
     {
-        BGM.Stop();
+
+        BGM.clip = null;
+        SFX.clip = null;
+        BackGroundSFX.clip = null;
+
+        /*BGM.Stop();
         SFX.Stop();
-        BackGroundSFX.Stop();
+        BackGroundSFX.Stop();*/
     }
 }

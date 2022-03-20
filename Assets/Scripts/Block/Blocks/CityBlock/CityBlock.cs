@@ -20,6 +20,7 @@ namespace Blocks
         private bool _previousState;
         private bool _currentState;
         public AudioClip DestroyedSfx;
+        public AudioClip GameOverAudioClip;
         private LevelStatisticsCollector _levelStatisticsCollector;
 
         public override void Start()
@@ -73,7 +74,8 @@ namespace Blocks
                     Game.Instance.isLevelDone = true;
                     AudioManager.Instance.StopAll();
 
-                    AudioManager.Instance.PlaySFX(DestroyedSfx);
+                    AudioManager.Instance.PlaySFX(GameOverAudioClip);
+                    
                     _levelStatisticsCollector.SetHighScore();
                     _isDied = true;
                     
