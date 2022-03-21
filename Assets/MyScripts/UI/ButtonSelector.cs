@@ -11,6 +11,9 @@ public class ButtonSelector : MonoBehaviour
 
     public void SelectOption(InputAction.CallbackContext context)
     {
+
+        Debug.Log(("Naviagtion Button CLicked"));
+
         if (context.ReadValue<Vector2>().y < 0)
         {
             MoveDown();
@@ -24,7 +27,11 @@ public class ButtonSelector : MonoBehaviour
 
     public void SubmitOption(InputAction.CallbackContext context)
     {
-        ButtonGameObjects[_activatedButton].GetComponent<Button>().onClick?.Invoke();
+
+        if(context.performed)
+            InvokeMethod();
+        
+
     }
 
 
@@ -42,6 +49,10 @@ public class ButtonSelector : MonoBehaviour
         ButtonGameObjects[0].GetComponent<Image>().enabled = false;
         _activatedButton = 1;
     }
-    
+
+    public void InvokeMethod()
+    {
+        ButtonGameObjects[_activatedButton].GetComponent<Button>().onClick?.Invoke();
+    }
     
 }
