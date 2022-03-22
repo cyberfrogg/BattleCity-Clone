@@ -58,8 +58,11 @@ namespace Statistics
                 AudioManager.Instance.StopAll();
 
                 AudioManager.Instance.PlaySFX(_gameOver);
+                
 
                 SetHighScore();
+                
+                PlayFabController.Instance.SetPlayerData(PlayerPrefs.GetInt("HighScore"));
                 Game.Instance.Triggers.OnPlayerTanksEnd.Invoke();
             }
         }

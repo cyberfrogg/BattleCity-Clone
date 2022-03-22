@@ -78,6 +78,8 @@ namespace Blocks
                     
                     _levelStatisticsCollector.SetHighScore();
                     _isDied = true;
+
+                    PlayFabController.Instance.SetPlayerData(PlayerPrefs.GetInt("HighScore"));
                     
                     Game.Instance.Triggers.OnCityBlockDied.Invoke();
                     _spriteRenderer.sprite = _deadSprite;

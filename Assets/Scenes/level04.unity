@@ -29453,7 +29453,7 @@ RectTransform:
   m_GameObject: {fileID: 1563215174}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1927656347}
   m_Father: {fileID: 1270994638}
@@ -30572,6 +30572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 72121944}
+  ButtonClick: {fileID: 8300000, guid: dc066e24d291fb948a57df077686f253, type: 3}
 --- !u!114 &1610169672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30661,6 +30662,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: f31e85a0-334e-4726-a906-aec75645022a
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8eac0123-e60e-48ac-9bf9-1334e870282b
+    m_ActionName: UI/ButtonClick[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI
