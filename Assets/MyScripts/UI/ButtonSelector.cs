@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -7,7 +9,7 @@ using UnityEngine.UI;
 public class ButtonSelector : MonoBehaviour
 {
     public GameObject[] ButtonGameObjects;
-    private int _activatedButton = 0;
+    [SerializeField]private int _activatedButton = 0;
     public AudioClip ButtonClickSound;
     public AudioClip ButtonSelectionSound;
 
@@ -31,8 +33,21 @@ public class ButtonSelector : MonoBehaviour
             {
                 MoveUp();
             }
+            else if(context.ReadValue<Vector2>().x <0)
+            {
+                MoveLeft();
+            }
 
+            else if (context.ReadValue<Vector2>().x >0)
+            {
+                MoveRight();
+            }
+
+
+            ShowImage();
         }
+
+        
         
     }
 
@@ -45,29 +60,67 @@ public class ButtonSelector : MonoBehaviour
         if (context.performed)
             InvokeMethod();
         
-
     }
 
 
     public void MoveUp()
     {
-        ButtonGameObjects[1].GetComponent<Image>().enabled = false;
-        ButtonGameObjects[0].GetComponent<Image>().enabled = true;
-        _activatedButton = 0;
+        
+        _activatedButton --;
+        if (_activatedButton % 2 != 0)
+        {
+            _activatedButton++;
+        }
+
     }
 
     public void MoveDown()
     {
-
-        ButtonGameObjects[1].GetComponent<Image>().enabled = true;
-        ButtonGameObjects[0].GetComponent<Image>().enabled = false;
-        _activatedButton = 1;
+        _activatedButton++;
+        if (_activatedButton % 2 == 0)
+        {
+            _activatedButton--;
+        }
     }
 
-    public void InvokeMethod()
+    public void MoveLeft()
+    {
+        _activatedButton -= 2;
+        if (_activatedButton < 0)
+        {
+            _activatedButton += 2;
+        }
+
+    }
+
+    public void MoveRight()
+    {
+        _activatedButton += 2;
+
+        if (_activatedButton > ButtonGameObjects.Length - 1)
+        {
+            _activatedButton -= 2;
+        }
+    }
+
+    public void ShowImage()
+    {
+        foreach (var button in ButtonGameObjects)
+        {
+            button.GetComponent<Image>().enabled = false;
+        }
+
+        ButtonGameObjects[_activatedButton].GetComponent<Image>().enabled = true;
+    }
+
+    public async void InvokeMethod()
     {
         AudioManager.Instance.PlaySFX(ButtonClickSound);
-        ButtonGameObjects[_activatedButton].GetComponent<Button>().onClick?.Invoke();
+        await UniTask.Delay(TimeSpan.FromSeconds(.5f));
+        if(ButtonGameObjects[_activatedButton]!=null)
+            ButtonGameObjects[_activatedButton].GetComponent<Button>().onClick?.Invoke();
     }
+
+
     
 }

@@ -152,6 +152,9 @@ namespace Statistics
 
         public void SetStageLevel()
         {
+
+
+
             if (PlayerPrefs.HasKey("StageCount"))
             {
                 PlayerPrefs.SetInt("StageCount", (PlayerPrefs.GetInt("StageCount")+1));

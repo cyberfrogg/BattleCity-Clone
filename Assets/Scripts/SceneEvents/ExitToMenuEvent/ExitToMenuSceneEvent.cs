@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Threading.Tasks;
 
 namespace SceneEvents
 {
@@ -11,7 +12,14 @@ namespace SceneEvents
         {
             base.TriggerEvent();
 
+            LoadMenuScene();
+        }
+
+        private async void LoadMenuScene()
+        {
+            await Task.Delay(2000);
             SceneManager.LoadScene(_menuSceneName);
+
         }
     }
 }

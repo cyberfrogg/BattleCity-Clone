@@ -96,6 +96,23 @@ namespace Entities
             base.Die(deathOwner);
         }
 
+
+        public void DiedByGenerate(Entity deathOwner)
+        {
+            AudioManager.Instance.PlaySFX(TankDestroySfx);
+            GameObject go = Instantiate(TankDestroyEffect, transform.position, Quaternion.identity);
+
+            if (DropPowerUp)
+            {
+                DropPickUp();
+                //Instantiate(PowerUps[Random.Range(0, PowerUps.Length)], new Vector3(transform.position.x +.5f, transform.position.y + .5f, transform.position.z + .5f), Quaternion.identity);
+            }
+            DestroyedTank.instance.TankTypeDestroyed[_enemyType] += 1;
+            Game.Instance.Triggers.OnTankKilled.Invoke(_killingValue);
+            base.Die(deathOwner);
+        }
+        
+
         private void DropPickUp()
         {
             float maxXBoundary = 9f;

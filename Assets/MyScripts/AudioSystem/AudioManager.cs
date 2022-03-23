@@ -73,9 +73,13 @@ public class AudioManager : MonoBehaviour
     public void StopAll()
     {
 
-        BGM.clip = null;
-        SFX.clip = null;
-        BackGroundSFX.clip = null;
+        if (AudioManager.Instance != null)
+        {
+            BGM.clip = null;
+            SFX.clip = null;
+            BackGroundSFX.clip = null;
+        }
+        
 
         /*BGM.Stop();
         SFX.Stop();

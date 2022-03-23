@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -86,9 +88,12 @@ public class ButtonSelectorForLeaderBoard : MonoBehaviour
         ButtonGameObjects[_activatedButton].GetComponent<Image>().enabled = true;
     }
 
-    public void InvokeMethod()
+    public async void InvokeMethod()
     {
+
         AudioManager.Instance.PlaySFX(ButtonClickSound);
+        await UniTask.Delay(TimeSpan.FromSeconds(.5f));
+
         ButtonGameObjects[_activatedButton].GetComponent<Button>().onClick?.Invoke();
     }
 }

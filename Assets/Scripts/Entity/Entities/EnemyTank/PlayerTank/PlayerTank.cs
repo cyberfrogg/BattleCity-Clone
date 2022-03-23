@@ -83,6 +83,7 @@ namespace Entities
         {
             if (Game.Instance.isLevelDone)
             {
+                GetComponent<PlayerInput>().enabled = false;
                 AudioManager.Instance.StopAll();
                 return;
             }

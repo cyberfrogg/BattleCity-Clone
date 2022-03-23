@@ -5,17 +5,16 @@ using UnityEngine.SceneManagement;
 
 namespace SceneEvents
 {
-    public class MainMenuLeaderBoard : SceneEvent
+    public class MainMenuLoad : SceneEvent
     {
-        [SerializeField] private string _leaderBoardScene;
+        //[SerializeField] private string _leaderBoardScene;
  
 
         public override void TriggerEvent()
         {
             base.TriggerEvent();
 
-            SceneManager.LoadScene(_leaderBoardScene);
-
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
         }
     }

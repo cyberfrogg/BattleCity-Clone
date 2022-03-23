@@ -12,4 +12,9 @@ public class ClearSaveFile : MonoBehaviour
         PlayerPrefs.DeleteKey("StageCount");
         PlayerPrefs.DeleteKey("GunTier");
     }
+
+    public void ClearAllData()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 }

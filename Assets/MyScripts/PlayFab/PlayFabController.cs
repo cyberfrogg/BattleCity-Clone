@@ -6,13 +6,14 @@ using PlayFab.ClientModels;
 using UnityEngine;
 using UnityEngine.Events;
 using JsonObject = PlayFab.Json.JsonObject;
-
+using TMPro;
 
 public class PlayFabController : MonoBehaviour
 {
-    private string _userEmail;
-    private string _userPassword;
-    private string _userName;
+    private string _userEmail = " ";
+    private string _userPassword = " ";
+    private string _userName = " ";
+    public TextMeshProUGUI ErrorReport;
 
 
     public GameObject LoginPanel;
@@ -41,6 +42,7 @@ public class PlayFabController : MonoBehaviour
     public GameObject LeaderBoardRowPrefab;
     public GameObject LeaderBoardContainer;
     public UnityEvent LeaderBoardHighScore;
+    public UnityEvent LoadLeaderBoardScore;
 
     #endregion
 
@@ -65,6 +67,7 @@ public class PlayFabController : MonoBehaviour
     public void Initialize()
     {
 
+            LoadLeaderBoardScore?.Invoke();
 
             if (string.IsNullOrEmpty(PlayFabSettings.staticSettings.TitleId))
             {
@@ -110,7 +113,7 @@ public class PlayFabController : MonoBehaviour
 
     private void OnLoginFailure(PlayFabError error)
     {
-
+        
         Debug.LogError(error.GenerateErrorReport());
 
 
@@ -132,7 +135,7 @@ public class PlayFabController : MonoBehaviour
         StartingPanel.SetActive(true);
         GetStats();
         GetHighScore();
-
+        
     }
 
     void OnDisplayName(UpdateUserTitleDisplayNameResult result)
@@ -142,7 +145,18 @@ public class PlayFabController : MonoBehaviour
 
     private void OnRegisterFailure(PlayFabError error)
     {
-        Debug.LogError(error.GenerateErrorReport());
+        string errorReport = error.GenerateErrorReport();
+        
+
+        ErrorReport.gameObject.SetActive(true);
+        var result = errorReport.Substring(errorReport.LastIndexOf('\n') + 1);
+        ErrorReport.text = result;
+
+        /*string[] singleErrorReport = errorReport.Split('\n');
+        foreach (string sub in singleErrorReport)
+        {
+            Debug.Log(sub);
+        }*/
     }
 
     public void SetUserEmail(string email)
@@ -177,6 +191,7 @@ public class PlayFabController : MonoBehaviour
 
     public void OnClickLogin()
     {
+
         var request = new LoginWithEmailAddressRequest { Email = _userEmail, Password = _userPassword };
         PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnLoginFailure);
     }
@@ -326,6 +341,7 @@ public class PlayFabController : MonoBehaviour
     void OnGetHighestScore(GetLeaderboardResult result)
     {
         TotalHighScore = result.Leaderboard[0].StatValue;
+
         LeaderBoardHighScore?.Invoke();
     }
 

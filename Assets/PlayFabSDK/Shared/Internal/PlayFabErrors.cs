@@ -735,7 +735,7 @@ namespace PlayFab
             if (ErrorDetails != null)
                 foreach (var pair in ErrorDetails)
                     foreach (var msg in pair.Value)
-                        _tempSb.Append("\n").Append(pair.Key).Append(": ").Append(msg);
+                        _tempSb.Append("\n")/*.Append(pair.Key).Append(": ")*/.Append(msg);
             return _tempSb.ToString();
         }
     }

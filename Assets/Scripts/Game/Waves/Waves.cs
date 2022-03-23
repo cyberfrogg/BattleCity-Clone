@@ -113,11 +113,15 @@ namespace GameUtils
         {
             foreach (var tank in _spawnedTanks)
             {
-                Game.Instance.Triggers.OnTankKilled.Invoke(0);
-                Destroy(tank.gameObject);
+                //Game.Instance.Triggers.OnTankKilled.Invoke(0);
+                tank.GetComponent<EnemyTank>().DiedByGenerate(tank);
+
+                //Destroy(tank.gameObject);
+                //_tanksGeneratedPerWave--;
+                //GenerateTanks();
             }
 
-            _spawnedTanks.Clear();
+            //_spawnedTanks.Clear();
         }
 
         public void SpawnRandomTanks()
@@ -185,6 +189,7 @@ namespace GameUtils
         {
 
             _tanksGeneratedPerWave += 3;
+            WaveGeneration = false;
 
             if (!_generateAnimationStop)
                 await GenerateEnemyAnimation();
@@ -207,6 +212,8 @@ namespace GameUtils
 
                 _spawnedTanks.Add(spawnedTank);
             }
+
+            
 
 
 
