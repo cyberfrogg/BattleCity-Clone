@@ -13,6 +13,7 @@ namespace Entities
         {
             base.Update();
 
+            
             AI.UpdateAI();
         }
     }

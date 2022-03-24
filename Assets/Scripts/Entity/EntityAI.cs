@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
+
 namespace Entities
 {
     /// <summary>
@@ -27,5 +28,7 @@ namespace Entities
         {
 
         }
+
+        
     }
 }

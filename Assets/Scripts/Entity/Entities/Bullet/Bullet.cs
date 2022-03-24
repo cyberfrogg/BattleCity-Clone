@@ -1,3 +1,6 @@
+using System;
+using Cysharp.Threading.Tasks;
+using GameUtils;
 using UnityEngine;
 
 namespace Entities
@@ -10,6 +13,18 @@ namespace Entities
         [SerializeField] private float _bulletSpeed;
         private Vector2 _followDirection;
         private bool _isFollowing;
+
+        public bool CanDestroySteel;
+        public BulletEffect BulletEffect;
+        public BulletType Type;
+        
+
+        public override void Start()
+        {
+
+            base.Start();
+            //SetBulletDamage();
+        }
 
         /// <summary>
         /// Stars bullet to follow direction
@@ -37,33 +52,68 @@ namespace Entities
         {
             base.Update();
 
-            if (_isFollowing)
+            if (_isFollowing && !Game.Instance.IsGamePaused)
             {
                 LookAt(_followDirection);
                 transform.Translate((transform.right * -_followDirection.x + transform.up * _followDirection.y) * _bulletSpeed * Time.deltaTime);
             }
+
         }
 
         public override void OnThingCollidedEnter(Thing thing)
         {
             base.OnThingCollidedEnter(thing);
 
-            if(Owner != null)
+
+            if (Owner != null)
             {
-                if(thing != Owner)
+
+                if (!thing.CompareTag("Water"))
                 {
-                    try
+                    if (thing != Owner)
                     {
-                        (thing as Tank).Damage(DamageCount, this);
-                    }
-                    catch
-                    {
+                        try
+                        {
+                            (thing as Tank).Damage(DamageCount, this);
+                        }
+                        catch
+                        {
 
-                    }
+                        }
 
-                    Destroy(gameObject);
+                        Instantiate(BulletEffect, transform.position, Quaternion.identity);
+                        Destroy(gameObject);
+                    }
                 }
+
+                
+            }
+
+            else
+            {
+                Instantiate(BulletEffect, transform.position, Quaternion.identity);
+                Destroy(gameObject);
             }
         }
+
+        public void SetBulletDamage(int damage = 1)
+        {
+            DamageCount = damage;
+        }
+
+        public int GetBulletDamage()
+        {
+            return DamageCount;
+        }
+
+        
+    }
+
+    public enum BulletType
+    {
+        PlayerBullet,
+        EnemyBullet
     }
 }
+
+

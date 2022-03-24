@@ -12,7 +12,13 @@ namespace Blocks
         /// <param name="collidedThing">thing that breaks part</param>
         public virtual void OnBlockPartBreak(BreakableBlockPart part, Thing collidedThing)
         {
-            Destroy(part.gameObject);
+            part.gameObject.SetActive(false);
+            //Destroy(part.gameObject);
+        }
+
+        public void OnBlockPartBreak(BreakSteel part, Thing collidedThing)
+        {
+            part.gameObject.SetActive(false);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace SceneEvents
         {
             base.TriggerEvent();
 
-            _collector.OnTankKilled();
+            //_collector.OnTankKilled();
         }
     }
 }

@@ -23,17 +23,23 @@ namespace Entities
             }
         }
         public float MoveSpeed;
-        public int Health { get; private set; }
+        [SerializeField]
+        public int Health { get; set; }
         public bool IsDead { get; private set; }
 
-        [SerializeField] private int _maxHealth;
-        [SerializeField] private Rigidbody2D _rigidbody;
+        [SerializeField] protected int _maxHealth;
+        [SerializeField] protected Rigidbody2D _rigidbody;
         [SerializeField] private Transform _spriteContainer;
         [SerializeField] private Gun _gun;
+        protected PlayerPowerUps _powerUps;
+
+        public AudioClip TankDestroySfx;
+ 
 
         public override void Awake()
         {
             base.Awake();
+            _powerUps = GameObject.FindGameObjectWithTag("Game").GetComponent<PlayerPowerUps>();
 
             Health = _maxHealth;
 
@@ -43,18 +49,35 @@ namespace Entities
             }
         }
 
+
+
+
         /// <summary>
         /// Moves self (tank)
         /// </summary>
         /// <param name="moveVector">Normolized movement vector</param>
         public virtual void Move(Vector2 moveVector)
         {
-            _rigidbody.velocity = (moveVector * MoveSpeed);
+            
 
             if (moveVector.x != 0 || moveVector.y != 0)
             {
+                
                 LookAt(moveVector);
             }
+
+            //_rigidbody.AddForce(moveVector * MoveSpeed);
+            //_rigidbody.MovePosition(_rigidbody.position + moveVector * MoveSpeed * Time.deltaTime);
+            _rigidbody.velocity = (moveVector * MoveSpeed);
+
+            
+
+        }
+
+        public virtual void StopMoving()
+        {
+            _rigidbody.velocity = Vector2.zero;
+
         }
 
         /// <summary>
@@ -66,10 +89,11 @@ namespace Entities
         {
             if(damageCount <= 0)
             {
-                throw new ArgumentException("Damage must be greater than 0");
+                Debug.Log("No damage done");
             }
 
             Health -= damageCount;
+
 
             ValidateHealth(damageOwner);
         }

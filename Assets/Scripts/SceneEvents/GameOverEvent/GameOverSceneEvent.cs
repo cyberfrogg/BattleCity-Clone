@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SceneEvents
 {
@@ -22,6 +23,9 @@ namespace SceneEvents
             await Task.Delay(2000);
 
             _gamveoverStatsWindow.SetActive(true);
+
+            await Task.Delay(2000);
+            SceneManager.LoadScene("menu");
         }
     }
 }

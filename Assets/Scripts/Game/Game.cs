@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Statistics;
 
@@ -14,22 +16,60 @@ namespace GameUtils
         public Map Map;
         public LevelStatisticsCollector StatisticsCollector;
 
-        [SerializeField] private int _tanksToKill = 10;
+        public int _tanksToKill;
+        public bool isLevelDone;
+        public bool IsGamePaused;
 
         public override void Awake()
         {
             base.Awake();
-
+            
             Instance = this;
+            IncreaseTankPerStage();
             Triggers.OnTankKilled.AddListener(validateDoneScore);
         }
 
-        private void validateDoneScore()
+        public override void Start()
         {
+            isLevelDone = false;
+        }
+
+
+        public void ChangeState()
+        {
+            if (!isLevelDone)
+            {
+                IsGamePaused = !IsGamePaused;
+                Triggers.OnLevelPaused?.Invoke();
+            }
+        }
+
+        private void validateDoneScore(int score)
+        {
+            StatisticsCollector.OnTankKilled(score);
+
             if(StatisticsCollector.Statistics.TanksKilled >= _tanksToKill)
             {
+                StatisticsCollector.UpdateTotalScore();
+                StatisticsCollector.SetStageLevel();
+                Debug.Log("All tanks killed");
+                
                 Triggers.OnLevelDone.Invoke();
             }
         }
+
+        public void IncreaseTankPerStage()
+        {
+
+            if (!PlayerPrefs.HasKey("StageCount"))
+            {
+                PlayerPrefs.SetInt("StageCount", 1);
+            }
+
+           
+            _tanksToKill = Mathf.Clamp((PlayerPrefs.GetInt("StageCount")) * 3, 3, 30);
+            
+        }
+
     }
 }
