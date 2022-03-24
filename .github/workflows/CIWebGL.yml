@@ -1,0 +1,52 @@
+name: Unity CI Pipeline 🎻
+
+on: 
+    push: { branches: [main] } 
+
+env:
+    UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+    UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+    UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+
+jobs:
+  buildWebGL:
+    name: Build for Web 🖥️
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Restore Library cache
+        uses: actions/cache@v2
+        with:
+          path: Library
+          key: Library-build-WebGL
+          restore-keys: |
+            Library-build-
+            Library-
+     
+      - name: Build Unity
+        id: unityBuild
+        uses: game-ci/unity-builder@v2   
+        with:
+          targetPlatform: WebGL
+
+
+      - name: Upload build to itch.io 
+        uses: robpc/itchio-upload-action@v1
+        with:
+          path: build/WebGL
+          project: dipok/bs23-battlecity
+          channel: HTML5
+          version: ${{ steps.unityBuild.outputs.buildVersion}}
+          api-key: ${{ secrets.ITCH_API_KEY }}
+       
+      
+   
+      #- name: Discord Notification
+       # uses: fateyan/action-discord-notifier@v1
+        #with:
+         # message-title: windows Build Link https://brainstation23.itch.io/westwood-manor
+          #webhook: ${{ secrets.DISCORD_WEBHOOK }}
