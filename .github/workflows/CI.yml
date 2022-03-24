@@ -45,8 +45,8 @@ jobs:
        
       
    
-      - name: Discord Notification
-        uses: fateyan/action-discord-notifier@v1
-        with:
-          message-title: windows Build Link https://brainstation23.itch.io/westwood-manor
-          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+      #- name: Discord Notification
+       # uses: fateyan/action-discord-notifier@v1
+        #with:
+         # message-title: windows Build Link https://brainstation23.itch.io/westwood-manor
+          #webhook: ${{ secrets.DISCORD_WEBHOOK }}
