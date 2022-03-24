@@ -27,9 +27,17 @@ namespace Entities
         }
         public override void UpdateAI()
         {
+
             base.UpdateAI();
+            if (GameObject.FindGameObjectWithTag("Game").GetComponent<PlayerPowerUps>().Timer || GameUtils.Game.Instance.IsGamePaused)
+            {
+                return;
+            }
+
 
             if(!_isStateRunning) setNewAiState();
+
+
 
             _idleState.UpdateState();
             _movingToPointState.UpdateState();

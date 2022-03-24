@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1472497847687021440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1472497847687021442}
+  - component: {fileID: 1472497847687021441}
+  m_Layer: 0
+  m_Name: LevelGeneration
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1472497847687021442
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472497847687021440}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1472497847687021441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472497847687021440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a836662b3f73cf46ba037640809f968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AllRoomPoint:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  StartingPosForPlayer:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  PlayerTransform: {fileID: 0}
+  EnemyTransform:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  StartingPosForEnemy:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Rooms:
+  - {fileID: 6956617881607721555, guid: 8a96eed0f26aff148a5ed725cb9ffc62, type: 3}
+  - {fileID: 8663514384891552362, guid: 2e81f30e47a40004783222b8514a8724, type: 3}
+  - {fileID: 6927518760414651853, guid: fdd7f87cc1ce3094e8391001ae67c75c, type: 3}
+  - {fileID: 2497560674166006733, guid: 1b37b904821175c4dbbcb773f8febae3, type: 3}
+  CityBlock: {fileID: 2661605824169579151, guid: 5c4e855d32c1bf6499ff005d7ec04fba, type: 3}
+  offset: 5
+  MinX: -7.5
+  MaxX: 7.5
+  MinY: -2.5
+  _resetTime: 0.0001
+  LevelIsLoading: {fileID: 0}

@@ -108,7 +108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4492948362357946978}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4412515973628987824}
@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ccff4c0efbd7cf46afbe123285b1024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WallAudio: {fileID: 8300000, guid: fdf801b4e3c1a234d9c7b01602c794fc, type: 3}
 --- !u!61 &4492948362357946976
 BoxCollider2D:
   m_ObjectHideFlags: 0

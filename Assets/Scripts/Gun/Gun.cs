@@ -8,7 +8,8 @@ namespace Guns
     /// </summary>
     public class Gun : MonoBehaviour
     {
-        [SerializeField] private Bullet _bulletPrefab;
+        [SerializeField] protected Bullet _bulletPrefab;
+        public AudioClip TankShootingSfx;
 
         /// <summary>
         /// Self tank
@@ -24,14 +25,28 @@ namespace Guns
             Tank = tank;
         }
 
+        void Start()
+        {
+            _bulletPrefab.CanDestroySteel = false;
+            Debug.Log($"Can destroy :  {_bulletPrefab.CanDestroySteel}");
+
+        }
+
+
+        public virtual void Update()
+        {
+            
+            Debug.Log($"Can destroy :  {_bulletPrefab.CanDestroySteel} Instance type: {this.GetType()}");
+        }
+
         /// <summary>
         /// Shoots bullet
         /// </summary>
         public virtual void Shoot()
         {
-            Bullet bullet = SpawnBullet();
+            /*Bullet bullet = SpawnBullet();
             bullet.transform.position = Tank.transform.position;
-            bullet.Follow(Tank.transform.up, Tank);
+            bullet.Follow(Tank.transform.up, Tank);*/
         }
 
         /// <summary>
@@ -40,10 +55,12 @@ namespace Guns
         /// <returns>Bullet reference</returns>
         public virtual Bullet SpawnBullet()
         {
+            
             Bullet bullet = Instantiate((Bullet)_bulletPrefab.Clone());
             bullet.transform.position = Tank.transform.position;
 
             return bullet;
         }
+
     }
 }
