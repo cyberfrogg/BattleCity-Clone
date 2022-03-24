@@ -9,7 +9,7 @@ env:
     UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
 
 jobs:
-  buildWebGL:
+  buildForWebGL:
     name: Build for Web 🖥️
     runs-on: ubuntu-latest
     strategy:
