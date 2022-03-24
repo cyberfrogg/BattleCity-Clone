@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Entities;
+using GameUtils;
 using UnityEngine;
 
 public class Helmet : PickUps
@@ -30,6 +31,12 @@ public class Helmet : PickUps
 
         for (int i = 0; i < loopCount; i++)
         {
+            while (Game.Instance.IsGamePaused)
+            {
+                await UniTask.Yield();
+
+            }
+
             _helmet.GetComponent<SpriteRenderer>().sprite = Sprite[i%Sprite.Length];
             await UniTask.Delay(TimeSpan.FromSeconds(.2f));
         }

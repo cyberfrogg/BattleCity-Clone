@@ -29,7 +29,7 @@ namespace Entities
         {
 
             base.UpdateAI();
-            if (GameObject.FindGameObjectWithTag("Game").GetComponent<PlayerPowerUps>().Timer)
+            if (GameObject.FindGameObjectWithTag("Game").GetComponent<PlayerPowerUps>().Timer || GameUtils.Game.Instance.IsGamePaused)
             {
                 return;
             }

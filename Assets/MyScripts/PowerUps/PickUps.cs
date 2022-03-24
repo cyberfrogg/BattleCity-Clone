@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using GameUtils;
 using UnityEngine;
 
 public abstract class PickUps : MonoBehaviour
@@ -35,6 +36,13 @@ public abstract class PickUps : MonoBehaviour
         for (int i = 0; i < loopCount; i++)
         {
             if(_picked) return;
+
+            while (Game.Instance.IsGamePaused)
+            {
+                await UniTask.Yield();
+
+            }
+
             GetComponent<SpriteRenderer>().enabled = spriteState;
             spriteState = !spriteState;
             await UniTask.Delay(TimeSpan.FromSeconds(.2f));

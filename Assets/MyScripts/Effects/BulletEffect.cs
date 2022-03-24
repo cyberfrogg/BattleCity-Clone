@@ -23,23 +23,46 @@ public class BulletEffect : MonoBehaviour
     {
 
         int childCount = transform.childCount;
+        int currentChildCount = childCount--;
 
+        while (currentChildCount>=-1 && !GameUtils.Game.Instance.IsGamePaused)
+        {
+            if ((0 <= (currentChildCount+1)) && ((currentChildCount+1) < childCount))
+            {
+                transform.GetChild(currentChildCount + 1).GetComponent<SpriteRenderer>().enabled = false;
+            }
+
+            if (0 <= currentChildCount && currentChildCount < childCount)
+            {
+                transform.GetChild(currentChildCount).GetComponent<SpriteRenderer>().enabled = true;
+            }
+
+            
+
+            await UniTask.DelayFrame(5);
+
+
+            currentChildCount--;
+        }
+
+
+
+
+        /*transform.GetChild(--childCount).GetComponent<SpriteRenderer>().enabled = true;
         
-        transform.GetChild(--childCount).GetComponent<SpriteRenderer>().enabled = true;
-        //await UniTask.Delay(TimeSpan.FromSeconds(1f));
 
         await UniTask.DelayFrame(5);
         transform.GetChild(childCount).GetComponent<SpriteRenderer>().enabled = false;
         transform.GetChild(--childCount).GetComponent<SpriteRenderer>().enabled = true;
         await UniTask.DelayFrame(5);
-        //await UniTask.Delay(TimeSpan.FromSeconds(1f));
+        
 
         transform.GetChild(childCount).GetComponent<SpriteRenderer>().enabled = false;
         transform.GetChild(--childCount).GetComponent<SpriteRenderer>().enabled = true;
         await UniTask.DelayFrame(5);
-        //await UniTask.Delay(TimeSpan.FromSeconds(1f));
+        
 
-        transform.GetChild(childCount).GetComponent<SpriteRenderer>().enabled = false;
+        transform.GetChild(childCount).GetComponent<SpriteRenderer>().enabled = false;*/
         Destroy(gameObject);
 
     }

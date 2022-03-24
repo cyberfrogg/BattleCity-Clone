@@ -10,6 +10,7 @@ TagManager:
   - Helmet
   - Game
   - Water
+  - Pause
   layers:
   - Default
   - TransparentFX

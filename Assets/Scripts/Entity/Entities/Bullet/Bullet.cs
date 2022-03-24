@@ -1,5 +1,6 @@
 using System;
 using Cysharp.Threading.Tasks;
+using GameUtils;
 using UnityEngine;
 
 namespace Entities
@@ -51,7 +52,7 @@ namespace Entities
         {
             base.Update();
 
-            if (_isFollowing)
+            if (_isFollowing && !Game.Instance.IsGamePaused)
             {
                 LookAt(_followDirection);
                 transform.Translate((transform.right * -_followDirection.x + transform.up * _followDirection.y) * _bulletSpeed * Time.deltaTime);

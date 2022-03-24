@@ -36,7 +36,7 @@ namespace Entities
         public override void Update()
         {
             base.Update();
-            if (_powerUps.Timer)
+            if (_powerUps.Timer || Game.Instance.IsGamePaused)
             {
                 StopMoving();
             }

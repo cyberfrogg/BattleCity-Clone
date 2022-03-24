@@ -27,15 +27,12 @@ namespace Entities
         public override void Update()
         {
             base.Update();
+            
+            if(Game.Instance.IsGamePaused)
+                movePosition  = Vector2.zero;
             transform.position += new Vector3(movePosition.x, movePosition.y, 0f) * MoveSpeed * Time.deltaTime;
-            //transform.Translate(movePosition * MoveSpeed * Time.deltaTime);
-        }
 
-        void FixedUpdate()
-        {
-            //_rigidbody.velocity = (movePosition * MoveSpeed);
-            //_rigidbody.MovePosition(_rigidbody.position + (new Vector2(movePosition.x , movePosition.y) * MoveSpeed * Time.deltaTime));
-            //_rigidbody.AddForce(movePosition * MoveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
+            
         }
 
         public override void Damage(int damageCount, Entity damageOwner)
@@ -56,11 +53,8 @@ namespace Entities
         public override void Move(Vector2 moveVector)
         {
             
-            //if (moveVector.x != 0 && moveVector.y != 0)
-            //    return;
-            //base.Move(moveVector);
 
-            if (moveVector.x != 0 && moveVector.y != 0)
+            if ((moveVector.x != 0 && moveVector.y != 0)  || (Game.Instance.IsGamePaused))
             {
                 movePosition = Vector2.zero;
                 return;
@@ -73,9 +67,9 @@ namespace Entities
                 LookAt(moveVector);
             }
 
+            Debug.Log("Called Move Function");
             movePosition = moveVector;
 
-            //transform.position += new Vector3(moveVector.x, moveVector.y, 0f) * MoveSpeed;
 
         }
 
@@ -88,6 +82,11 @@ namespace Entities
                 return;
             }
 
+            if (Game.Instance.IsGamePaused)
+            {
+                return;
+            }
+                
 
             if (context.canceled)
             {
@@ -99,6 +98,8 @@ namespace Entities
                 AudioManager.Instance.PlayBackGroundSFX(PlayerMovement);
             }
             Debug.Log("called from player movement");
+
+            
             Move(context.ReadValue<Vector2>());
 
             Debug.Log("Called from player input "+ context.ReadValue<Vector2>());
@@ -111,14 +112,15 @@ namespace Entities
                 AudioManager.Instance.StopAll();
                 return;
             }
+
+            if (Game.Instance.IsGamePaused)
+            {
+                return;
+            }
+
             Gun.Shoot();
         }
 
-        public override void OnThingCollidedEnter(Thing thing)
-        {
-            base.OnThingCollidedEnter(thing);
-            //movePosition = Vector2.zero;
-        }
 
     }
 }

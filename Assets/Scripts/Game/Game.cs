@@ -18,6 +18,7 @@ namespace GameUtils
 
         public int _tanksToKill;
         public bool isLevelDone;
+        public bool IsGamePaused;
 
         public override void Awake()
         {
@@ -31,6 +32,16 @@ namespace GameUtils
         public override void Start()
         {
             isLevelDone = false;
+        }
+
+
+        public void ChangeState()
+        {
+            if (!isLevelDone)
+            {
+                IsGamePaused = !IsGamePaused;
+                Triggers.OnLevelPaused?.Invoke();
+            }
         }
 
         private void validateDoneScore(int score)

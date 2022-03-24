@@ -85,4 +85,24 @@ public class AudioManager : MonoBehaviour
         SFX.Stop();
         BackGroundSFX.Stop();*/
     }
+
+    public void PauseAll()
+    {
+        if (AudioManager.Instance != null)
+        {
+            if (GameUtils.Game.Instance.IsGamePaused)
+            {
+                BGM.volume = 0f;
+                SFX.volume = 0f;
+                BackGroundSFX.volume = 0f;
+            }
+            else
+            {
+                BGM.volume = 1f;
+                SFX.volume = 1f;
+                BackGroundSFX.volume = .5f;
+            }
+        }
+        
+    }
 }

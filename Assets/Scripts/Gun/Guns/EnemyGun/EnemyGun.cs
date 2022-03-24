@@ -30,7 +30,7 @@ namespace Guns
         public override void Shoot()
         {
 
-            if (!GameObject.FindGameObjectWithTag("Game").GetComponent<PlayerPowerUps>().Timer)
+            if (!GameObject.FindGameObjectWithTag("Game").GetComponent<PlayerPowerUps>().Timer && !Game.Instance.IsGamePaused)
             {
                 if (_nextFiring <= 0)
                 {

@@ -422,6 +422,26 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: f31e85a0-334e-4726-a906-aec75645022a
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8eac0123-e60e-48ac-9bf9-1334e870282b
+    m_ActionName: UI/ButtonClick[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5994418532447914685, guid: e95bfbf5205c4304f9eaf1b98eb2950b, type: 3}
+        m_TargetAssemblyTypeName: PauseGame, Assembly-CSharp
+        m_MethodName: EnableDisablePause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: eda96f72-1882-4e3e-bbd6-516efb0c8f7d
+    m_ActionName: Player/Pause[/Keyboard/p]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

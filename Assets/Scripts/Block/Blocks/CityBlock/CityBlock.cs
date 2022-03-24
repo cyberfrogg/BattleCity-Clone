@@ -39,7 +39,7 @@ namespace Blocks
 
             _currentState = _powerUps.PickedShovel;
             
-            if (_currentState != _previousState)
+            if (_currentState != _previousState && !Game.Instance.IsGamePaused)
             {
                 ChangeTile();
                 Debug.Log("Called this function");
